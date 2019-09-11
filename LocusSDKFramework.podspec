@@ -12,6 +12,7 @@ Pod::Spec.new do |s|
   s.license                 = { :type => 'Apache-2.0', :file => 'LICENSE' }
 
   s.ios.vendored_frameworks = "LocusSDKFramework.framework"
+  s.exclude_files = "SampleApp"
 
   s.dependency 'Alamofire'
   s.dependency 'AlamofireImage'
