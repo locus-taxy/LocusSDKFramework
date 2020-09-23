@@ -22,9 +22,8 @@ Pod::Spec.new do |s|
   s.dependency 'RxCocoa'
   s.dependency 'RxCoreLocation'
   s.dependency 'RxRealm'
-  s.dependency 'Cosmos'
-  s.dependency 'CropViewController'
-  s.dependency 'KeyboardAvoidingView'
-  s.dependency 'Reusable'
+  s.dependency 'Cosmos','~>17.0.0'
+  s.dependency 'CropViewController','~>2.4.0'
+  s.dependency 'IHKeyboardAvoiding'
 
 end
