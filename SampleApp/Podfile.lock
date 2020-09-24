@@ -1,34 +1,41 @@
 PODS:
-  - Alamofire (4.8.2)
-  - AlamofireImage (3.5.2):
-    - Alamofire (~> 4.8)
-  - Cosmos (17.0.0)
-  - CropViewController (2.4.0)
-  - IHKeyboardAvoiding (4.7)
-  - LocusSDKFramework (0.0.1):
-    - Alamofire
-    - AlamofireImage
-    - Cosmos (~> 17.0.0)
-    - CropViewController (~> 2.4.0)
-    - IHKeyboardAvoiding
-    - Moya/RxSwift
-    - RealmSwift
-    - RxCocoa
-    - RxCoreLocation
-    - RxRealm
-    - RxSwift
+  - Alamofire (4.9.1)
+  - AlamofireImage (3.6.0):
+    - Alamofire (~> 4.9)
+  - Cosmos (21.0.0)
+  - CropViewController (2.5.4)
+  - KeyboardAvoidingView (5.0.1):
+    - ViewState (>= 1.0.0)
+  - LocusSDKFramework (0.0.2):
+    - Alamofire (~> 4.9.1)
+    - AlamofireImage (~> 3.6.0)
+    - Cosmos (~> 21.0.0)
+    - CropViewController (~> 2.5.2)
+    - KeyboardAvoidingView (~> 5.0.0)
+    - Moya/RxSwift (~> 13.0.1)
+    - RealmSwift (~> 3.21.0)
+    - Reusable (~> 4.1.0)
+    - RxCocoa (~> 4.5.0)
+    - RxCoreLocation (~> 1.3.2)
+    - RxRealm (~> 0.7.6)
+    - RxSwift (~> 4.5.0)
   - Moya/Core (13.0.1):
     - Alamofire (~> 4.1)
     - Result (~> 4.1)
   - Moya/RxSwift (13.0.1):
     - Moya/Core
     - RxSwift (~> 4.0)
-  - Realm (3.17.3):
-    - Realm/Headers (= 3.17.3)
-  - Realm/Headers (3.17.3)
-  - RealmSwift (3.17.3):
-    - Realm (= 3.17.3)
+  - Realm (3.21.0):
+    - Realm/Headers (= 3.21.0)
+  - Realm/Headers (3.21.0)
+  - RealmSwift (3.21.0):
+    - Realm (= 3.21.0)
   - Result (4.1.0)
+  - Reusable (4.1.1):
+    - Reusable/Storyboard (= 4.1.1)
+    - Reusable/View (= 4.1.1)
+  - Reusable/Storyboard (4.1.1)
+  - Reusable/View (4.1.1)
   - RxCocoa (4.5.0):
     - RxSwift (>= 4.4.2, ~> 4.4)
   - RxCoreLocation (1.3.2):
@@ -40,51 +47,57 @@ PODS:
     - RealmSwift (~> 3.0)
     - RxSwift (~> 4.0)
   - RxSwift (4.5.0)
+  - ViewState (1.0.0)
 
 DEPENDENCIES:
-  - "LocusSDKFramework (from `git@github.com:locus-taxy/LocusSDKFramework.git`)"
+  - "LocusSDKFramework (from `git@github.com:locus-taxy/LocusSDKFramework.git`, branch `ES-24031-SampleAppWithFramework`)"
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - Alamofire
     - AlamofireImage
     - Cosmos
     - CropViewController
-    - IHKeyboardAvoiding
+    - KeyboardAvoidingView
     - Moya
     - Realm
     - RealmSwift
     - Result
+    - Reusable
     - RxCocoa
     - RxCoreLocation
     - RxRealm
     - RxSwift
+    - ViewState
 
 EXTERNAL SOURCES:
   LocusSDKFramework:
+    :branch: ES-24031-SampleAppWithFramework
     :git: "git@github.com:locus-taxy/LocusSDKFramework.git"
 
 CHECKOUT OPTIONS:
   LocusSDKFramework:
-    :commit: 80bd0bfa44a115abfcae4409c34242cf8d06f3a4
+    :commit: 797e9c98ff0fe1b199ba90028bb310a399507c9d
     :git: "git@github.com:locus-taxy/LocusSDKFramework.git"
 
 SPEC CHECKSUMS:
-  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
-  AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
-  Cosmos: 309e489f21ffc91a1eeecfebef7f817cd2fcfba6
-  CropViewController: a090820b15fc3da68e694d7c192a4708c576828b
-  IHKeyboardAvoiding: 4cae0880c3975feffa278495df894c5166e71ad0
-  LocusSDKFramework: ef984a2e5f14c21d051b3ceee62cf15a7e194d3c
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
+  Cosmos: 3dfb6e4ba48bd48b8c9aa2a77048ae11ed114f96
+  CropViewController: 980df34ffc499db89755b2f307f20eca00cd40c6
+  KeyboardAvoidingView: ef26d0d7e55ae412e9ef6e02ba84e7540af0ce4e
+  LocusSDKFramework: 14e2d06d19b9c198af1db86320b79d3101e2759d
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
-  Realm: 5a1d9d47bfc101dd597668b1a8af4288a2557f6d
-  RealmSwift: b7fdc2d18616621c31df5c7a398a45a2163f8eb0
+  Realm: 38e9dcb19104b58407167d99f70d4995f7c16023
+  RealmSwift: 3183cc1ad48378fbcd634311b22c0e6c44021152
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  Reusable: 53a9acf5c536f229b31b5865782414b508252ddb
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxCoreLocation: 23d0f2f06fba5af57f2fa9064a5c165e75eb4c33
   RxRealm: 5379eddd74f8d617ca7681d1f8d144af25b432b0
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  ViewState: 78aa77483e74e592c22e841619b853bc686843be
 
-PODFILE CHECKSUM: 66fdb462b19b4145028f4dd39c01c387a4b74754
+PODFILE CHECKSUM: 4640c60b7c49de505ea3467002957a9451974c49
 
 COCOAPODS: 1.9.3

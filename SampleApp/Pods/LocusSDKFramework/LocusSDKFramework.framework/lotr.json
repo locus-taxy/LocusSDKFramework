@@ -1,0 +1,4767 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Lotr API",
+    "version": "1.0.0"
+  },
+  "host": "lotr.locus-api.com",
+  "schemes": [
+    "https"
+  ],
+  "basePath": "/v1/",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "securityDefinitions": {
+    "locusauth": {
+      "type": "basic",
+      "description": "HTTP Basic Authentication"
+    }
+  },
+  "paths": {
+    "/clientId/{clientId}/user/{userId}/datetime": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/UserIdParam"
+        }
+      ],
+      "post": {
+        "summary": "Sync with server date and time",
+        "operationId": "syncDateTime",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Current App date time data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DateTimeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Server date and time information",
+            "schema": {
+              "$ref": "#/definitions/DateTimeResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/user/{userId}": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/UserIdParam"
+        }
+      ],
+      "get": {
+        "summary": "Get a specific user created by this client",
+        "operationId": "getUser",
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "A user",
+            "schema": {
+              "$ref": "#/definitions/ExtendedUserState"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/user/{userId}/appInit": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/UserIdParam"
+        }
+      ],
+      "post": {
+        "summary": "Get data required by app on login",
+        "operationId": "initializeApp",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "App data required for initialization",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AppInitRequest"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Data required for app on login",
+            "schema": {
+              "$ref": "#/definitions/AppInitializationResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/user/{userId}/sdkInitData": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/UserIdParam"
+        }
+      ],
+      "post": {
+        "summary": "Get user data required for initialization of sdk",
+        "operationId": "initializeSdk",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Sdk data required for initialization",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SdkInitRequest"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "App configuration for a user",
+            "schema": {
+              "$ref": "#/definitions/SdkInitializationResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/user/{userId}/password": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/UserIdParam"
+        }
+      ],
+      "post": {
+        "summary": "update user's password",
+        "description": "Update a user's password by providing the existing and new password",
+        "operationId": "updateUserPassword",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Object containing existing and new password",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdatePasswordRequest"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Null response"
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/user/{userId}/password-metadata": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/UserIdParam"
+        }
+      ],
+      "get": {
+        "operationId": "passwordMetadata",
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Metadata of user's password",
+            "schema": {
+              "$ref": "#/definitions/PasswordMetadata"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/user/{userId}/status": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/UserIdParam"
+        }
+      ],
+      "post": {
+        "summary": "Update status for a specific user",
+        "operationId": "updateUserStatus",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "User status to be updated",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserStatus"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated user",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/user/{userId}/channel": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/UserIdParam"
+        }
+      ],
+      "put": {
+        "summary": "Update notification channel for a specific user",
+        "operationId": "addNotificationChannel",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Notification channel to be created",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/NotificationChannel"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Null response"
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      },
+      "get": {
+        "summary": "Get notification channel response of a specific user",
+        "operationId": "getNotificationChannel",
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Notification channel response for a user.",
+            "schema": {
+              "$ref": "#/definitions/NotificationChannel"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/user/{userId}/device": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/UserIdParam"
+        }
+      ],
+      "get": {
+        "summary": "Get device information for a specific user",
+        "operationId": "getDeviceInfo",
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "device info",
+            "schema": {
+              "$ref": "#/definitions/DeviceInfo"
+            }
+          },
+          "404": {
+            "description": "Not Found, if device info is not available for the user id"
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "Update device information for a specific user",
+        "operationId": "updateDeviceInfo",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "device info to be added",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeviceInfo"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Null response"
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/user/{userId}/device/history": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/UserIdParam"
+        }
+      ],
+      "get": {
+        "summary": "Get recent history of device information for a specific user",
+        "operationId": "getDeviceHistory",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of device info objects to return. This will default to 10. Max value is 1000.",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "minTime",
+            "in": "query",
+            "description": "Smaller end of time range (in UTC using the standard ISO 8601 format). If specified, device info objects before this time will not be included.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "maxTime",
+            "in": "query",
+            "description": "Larger end of time range (in UTC using the standard ISO 8601 format). Only device info objects before or at this time are included in response. If missing, will default to current time.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of user's device info objects, in increasing order of time",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/GetDeviceHistoryResponse"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/user/{userId}/location": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/UserIdParam"
+        }
+      ],
+      "post": {
+        "summary": "Update the current location of user",
+        "operationId": "updateUserLocation",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Location object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LocationUpdateRequestWrapper"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Null response"
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/user/{userId}/register-message": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/UserIdParam"
+        }
+      ],
+      "post": {
+        "summary": "Register control event",
+        "description": "Store unacknowledged control events to the data base.",
+        "operationId": "registerMessage",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Details of control event",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ControlEventWrapper"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Null response"
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/user/{userId}/ack": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/UserIdParam"
+        }
+      ],
+      "post": {
+        "summary": "Send ack for a message received from server",
+        "description": "Client apps should use this API to acknowledge the receipt of a message from server, over a notification channel.",
+        "operationId": "ackMessage",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Details of message for which ack is being sent",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AckMessage"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Null response"
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      },
+      "get": {
+        "summary": "Get all un-acked messages for this user",
+        "description": "Client apps can use this API to fetch messages that haven't been delivered, due to network or FCM/APNS failure. Returns maximum 100 messages.",
+        "operationId": "getUnackedMessages",
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of unprocessed messages, for the user.",
+            "schema": {
+              "$ref": "#/definitions/GetUnackedMessagesResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/user/{userId}/ack-bulk": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/UserIdParam"
+        }
+      ],
+      "post": {
+        "summary": "Send ack for messages received from server",
+        "description": "Client apps should use this API to acknowledge the receipt of a message from server, over a notification channel.",
+        "operationId": "ackMessagesBulk",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Details of message for which ack is being sent",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AckMessagesBulk"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Null response"
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      },
+      "get": {
+        "summary": "Get all un-acked messages for this user",
+        "description": "Client apps can use this API to fetch messages that haven't been delivered, due to network or FCM/APNS failure. Returns maximum 100 messages.",
+        "operationId": "getUnackedMessagesBulk",
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of unprocessed messages, for the user.",
+            "schema": {
+              "$ref": "#/definitions/GetUnackedMessagesBulkResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/user/{userId}/state": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/UserIdParam"
+        }
+      ],
+      "post": {
+        "summary": "Dump entire client app state to server",
+        "description": "Client apps should use this API to dump their state to server, upon receiving a STATE_DUMP event from server. This is used only for debugging purpose.",
+        "operationId": "stateDump",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Client app state object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ClientAppState"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Null response"
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/user/{userId}/alltours": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/UserIdParam"
+        }
+      ],
+      "get": {
+        "summary": "Get user tours",
+        "operationId": "getUserTours",
+        "parameters": [
+          {
+            "name": "shiftDate",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "include",
+            "in": "query",
+            "description": "Comma separated list of extra fields that should be included for the batch. Supported values are TASKS",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "User tours response object",
+            "schema": {
+              "$ref": "#/definitions/UserToursResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/task/{taskId}": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/TaskIdParam"
+        }
+      ],
+      "get": {
+        "summary": "Get a specific task",
+        "operationId": "getTask",
+        "tags": [
+          "Task"
+        ],
+        "responses": {
+          "200": {
+            "description": "A task",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/task/{taskId}/status": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/TaskIdParam"
+        }
+      ],
+      "post": {
+        "summary": "Update status for a specific task",
+        "operationId": "updateTaskStatus",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Task status to be updated.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TaskStatusRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Task"
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated task object",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/task/{taskId}/visit/{visitId}/status": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/TaskIdParam"
+        },
+        {
+          "$ref": "#/parameters/VisitIdParam"
+        }
+      ],
+      "post": {
+        "summary": "Update status for a specific visit in the graph of a specific task",
+        "operationId": "updateVisitStatus",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Visit status to be updated.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VisitStatusRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Task"
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated task object",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/task/{taskId}/visit/{visitId}/payment": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/TaskIdParam"
+        },
+        {
+          "$ref": "#/parameters/VisitIdParam"
+        }
+      ],
+      "post": {
+        "summary": "Update payments info",
+        "operationId": "updatePayment",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Payment update request object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdatePaymentRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Task"
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated task object",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/task/{taskId}/visit/{visitId}/lineitemtransaction": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/TaskIdParam"
+        },
+        {
+          "$ref": "#/parameters/VisitIdParam"
+        }
+      ],
+      "post": {
+        "summary": "Update line item transaction info",
+        "operationId": "updateLineItemTransaction",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Line item transaction update request object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateLineItemTransactionRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Task"
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated task object",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/task/{taskId}/visit/{visitId}/location/{locationId}/phonecall": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/TaskIdParam"
+        },
+        {
+          "$ref": "#/parameters/VisitIdParam"
+        },
+        {
+          "name": "locationId",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "summary": "Make a phone call to the customer at a visit location",
+        "operationId": "makeVisitPhoneCall",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Phone call request.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/MakePhoneCallRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Task"
+        ],
+        "responses": {
+          "200": {
+            "description": "Status of phone call request"
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/task/{taskId}/visit/{visitId}/location/{locationId}/slot": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/TaskIdParam"
+        },
+        {
+          "$ref": "#/parameters/VisitIdParam"
+        },
+        {
+          "name": "locationId",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "summary": "Update time slot for a specific visit in the task",
+        "operationId": "updateVisitTimeSlot",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Time slot to be updated.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateTimeSlotRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Task"
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated task object",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      },
+      "get": {
+        "summary": "Get slot suggestions for a specific visit in the task",
+        "operationId": "getVisitTimeSlots",
+        "tags": [
+          "Task"
+        ],
+        "responses": {
+          "200": {
+            "description": "List of time slots",
+            "schema": {
+              "$ref": "#/definitions/GetTimeSlotsResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/task/{taskId}/file/{filename}": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/TaskIdParam"
+        },
+        {
+          "name": "filename",
+          "in": "path",
+          "description": "A unique name for the file, without extension.",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "summary": "Upload a file",
+        "description": "Upload a file, which is somehow related to this task. Max size is 1 MB",
+        "operationId": "uploadFileForTask",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "name": "file",
+            "in": "formData",
+            "description": "A file",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "tags": [
+          "Task"
+        ],
+        "responses": {
+          "200": {
+            "description": "Url for the uploaded file",
+            "schema": {
+              "$ref": "#/definitions/FileUploadResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/apk-upload": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        }
+      ],
+      "post": {
+        "summary": "Upload new app apk",
+        "operationId": "uploadAppApk",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/MultipartFileParam"
+          },
+          {
+            "name": "versionName",
+            "in": "formData",
+            "description": "An apk version name, e.g. 1.9.8",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "versionCode",
+            "in": "formData",
+            "description": "An apk version code, e.g. 150",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "isRollback",
+            "in": "formData",
+            "description": "whether the apk is a reverted build with a higher version code for contingency rollback",
+            "required": false,
+            "type": "boolean",
+            "default": false
+          }
+        ],
+        "tags": [
+          "Apk"
+        ],
+        "responses": {
+          "200": {
+            "description": "Null Response"
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/lotr/{versionCode}": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/VersionCodeParam"
+        }
+      ],
+      "get": {
+        "summary": "Checks lotr app version",
+        "description": "Checks lotr version and returns lotr information if app has to be updated",
+        "operationId": "verifyLotrAppVersion",
+        "tags": [
+          "Apk"
+        ],
+        "responses": {
+          "200": {
+            "description": "LotrVersionResponse object",
+            "schema": {
+              "$ref": "#/definitions/LotrVersionResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/lotr/{versionCode}/active": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/VersionCodeParam"
+        }
+      ],
+      "post": {
+        "summary": "Update the active apk version configured for a client",
+        "operationId": "updateActiveAppVersion",
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "description": "Update Active App Version request object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateActiveAppVersionRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Apk"
+        ],
+        "responses": {
+          "200": {
+            "description": "Null response"
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/lotr-version": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        }
+      ],
+      "get": {
+        "summary": "Get a list of available apk versions for a client",
+        "description": "returns list of available apk versions for a client",
+        "operationId": "getAvailableApkVersions",
+        "tags": [
+          "Apk"
+        ],
+        "responses": {
+          "200": {
+            "description": "AvailableApkVersionsResponse object",
+            "schema": {
+              "$ref": "#/definitions/AvailableApkVersionsResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/lotr-active": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        }
+      ],
+      "get": {
+        "summary": "Checks lotr app version for a specific client",
+        "description": "returns lotr app version for a specific client",
+        "operationId": "getActiveApkVersion",
+        "tags": [
+          "Apk"
+        ],
+        "responses": {
+          "200": {
+            "description": "ActiveApkVersionForClientResponse object",
+            "schema": {
+              "$ref": "#/definitions/ActiveApkVersionForClientResponse"
+            }
+          }
+        },
+        "security": []
+      }
+    },
+    "/lotr-version": {
+      "get": {
+        "summary": "Get active apk versions for all clients",
+        "description": "returns active apk versions for all clients",
+        "operationId": "getActiveApkVersions",
+        "tags": [
+          "Apk"
+        ],
+        "responses": {
+          "200": {
+            "description": "ActiveApkVersionsResponse object",
+            "schema": {
+              "$ref": "#/definitions/ActiveApkVersionsResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/user/{userId}/bulk": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/UserIdParam"
+        }
+      ],
+      "post": {
+        "summary": "Bulk updates for a specific user",
+        "operationId": "bulkUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Data to be updated",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BulkUpdates"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Null response"
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/user/{userId}/visit/{visitId}/status": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/UserIdParam"
+        },
+        {
+          "$ref": "#/parameters/VisitIdParam"
+        }
+      ],
+      "post": {
+        "summary": "Update status for a specific user visit",
+        "operationId": "updateUserVisitStatus",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Visit status to be updated.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VisitStatusRequest"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated User Visit object",
+            "schema": {
+              "$ref": "#/definitions/UserVisit"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/tour/{tourId}/visit/{visitId}/status": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/TourIdParam"
+        },
+        {
+          "$ref": "#/parameters/VisitIdParam"
+        }
+      ],
+      "post": {
+        "summary": "Update status of tour visit",
+        "operationId": "updateTourVisitStatus",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Visit status to be updated.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/VisitStatusRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Tour"
+        ],
+        "responses": {
+          "200": {
+            "description": "Null response"
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/user/{userId}/photo": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/UserIdParam"
+        }
+      ],
+      "post": {
+        "summary": "Upload user's picture",
+        "description": "Upload an image file, to be used as user's picture. Max size is 1 MB",
+        "operationId": "updateUserPhoto",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "name": "file",
+            "in": "formData",
+            "description": "An image file to use as user's picture",
+            "required": true,
+            "type": "file"
+          }
+        ],
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated user photo",
+            "schema": {
+              "$ref": "#/definitions/ExtendedUserState"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Remove user's picture",
+        "operationId": "removeUserPhoto",
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Response code when removing user photo is successful"
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/user/{userId}/update-profile": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/UserIdParam"
+        }
+      ],
+      "post": {
+        "summary": "Update user profile",
+        "description": "Updates profile of the user",
+        "operationId": "updateUserProfile",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "New name of the user to be updated",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateUserProfileRequest"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated user",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/log": {
+      "post": {
+        "summary": "Logs the body",
+        "operationId": "log",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "The payload to be logged",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LogWrapper"
+            }
+          }
+        ],
+        "tags": [
+          "Log"
+        ],
+        "responses": {
+          "200": {
+            "description": "Null Response"
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/user/{userId}/publish-event": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/UserIdParam"
+        }
+      ],
+      "put": {
+        "summary": "Publish control events for user",
+        "operationId": "publishControlEvent",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Control Event request to be published",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ControlEventPublishRequest"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Null response"
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/user-lotr-version": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        }
+      ],
+      "get": {
+        "summary": "Get LOTR versions",
+        "operationId": "getLotrVersions",
+        "tags": [
+          "Client"
+        ],
+        "responses": {
+          "200": {
+            "description": "Response object",
+            "schema": {
+              "$ref": "#/definitions/LotrVersionsResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/user/{userId}/phone-number": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/UserIdParam"
+        }
+      ],
+      "post": {
+        "summary": "Update user phone number",
+        "description": "Updates user with number present in body. Verifies OTP if enabled.",
+        "operationId": "updateUserPhoneNumber",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UpdateUserPhoneNumberRequest"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Updated user",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/user/{userId}/request-otp": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/UserIdParam"
+        }
+      ],
+      "post": {
+        "summary": "Request otp for user",
+        "description": "If enabled, otp is sent to the number specified in the request",
+        "operationId": "requestUserOtp",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GenerateOtpRequest"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Null response"
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    },
+    "/client/{clientId}/user/{userId}/verify-phone-number": {
+      "parameters": [
+        {
+          "$ref": "#/parameters/ClientIdParam"
+        },
+        {
+          "$ref": "#/parameters/UserIdParam"
+        }
+      ],
+      "post": {
+        "description": "Verify user's phone number",
+        "operationId": "verifyUserPhoneNumber",
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "User with phone verified",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        },
+        "security": [
+          {
+            "locusauth": []
+          }
+        ]
+      }
+    }
+  },
+  "parameters": {
+    "ClientIdParam": {
+      "name": "clientId",
+      "in": "path",
+      "description": "Id of the client",
+      "required": true,
+      "type": "string"
+    },
+    "UserIdParam": {
+      "name": "userId",
+      "in": "path",
+      "description": "Id of the user",
+      "required": true,
+      "type": "string"
+    },
+    "TaskIdParam": {
+      "name": "taskId",
+      "in": "path",
+      "description": "Id of the task",
+      "required": true,
+      "type": "string"
+    },
+    "VisitIdParam": {
+      "name": "visitId",
+      "in": "path",
+      "description": "Id of the visit",
+      "required": true,
+      "type": "string"
+    },
+    "MultipartFileParam": {
+      "name": "file",
+      "in": "formData",
+      "description": "Multipart file",
+      "required": true,
+      "type": "file"
+    },
+    "VersionCodeParam": {
+      "name": "versionCode",
+      "in": "path",
+      "description": "current version code of the lotr app",
+      "required": true,
+      "type": "integer"
+    },
+    "TourIdParam": {
+      "name": "tourId",
+      "in": "path",
+      "description": "Id of the tour",
+      "required": true,
+      "type": "string"
+    }
+  },
+  "definitions": {
+    "UpdateUserProfileRequest": {
+      "description": "A request for user's name change",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "New name to be updated"
+        }
+      }
+    },
+    "TimeDistancePair": {
+      "properties": {
+        "distance": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "duration": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "User": {
+      "description": "A person using one of our apps (can be an end customer using RideSafe app, or a delivery person using the delivery boy app)",
+      "properties": {
+        "clientId": {
+          "type": "string",
+          "description": "Id of the client who added this user"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Id of the user that client knows"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the user"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Phone number of the user. Include country code along with phone number."
+        },
+        "photoUrl": {
+          "type": "string"
+        },
+        "status": {
+          "description": "Status of the user",
+          "$ref": "#/definitions/UserStatus"
+        },
+        "isPhoneNumberVerified": {
+          "description": "Flag to denote if user's phone number is verified",
+          "type": "boolean",
+          "default": false
+        },
+        "phoneNumberVerifiedAt": {
+          "description": "Timestamp of verification of phone number",
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "UserAuthToken": {
+      "description": "A persons token for login",
+      "properties": {
+        "clientId": {
+          "type": "string",
+          "description": "Id of the client who added this user"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Id of the user that client knows"
+        },
+        "token": {
+          "type": "string",
+          "description": "Token of the user"
+        }
+      }
+    },
+    "TeamId": {
+      "description": "A team identifier",
+      "properties": {
+        "clientId": {
+          "description": "Id of the client who manages the given team",
+          "type": "string"
+        },
+        "teamId": {
+          "description": "Id of the team",
+          "type": "string"
+        }
+      }
+    },
+    "ExtendedUserState": {
+      "description": "An extension of user, including more information, like location, current tasks etc.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/User"
+        },
+        {
+          "type": "object"
+        }
+      ]
+    },
+    "UserStatus": {
+      "description": "A simple wrapper for user status",
+      "properties": {
+        "status": {
+          "description": "Status of the user",
+          "type": "string",
+          "enum": [
+            "AVAILABLE",
+            "BUSY_AUTO",
+            "BUSY_MANUAL",
+            "DISABLED",
+            "BUSY_LOGGED_OUT",
+            "ERROR"
+          ]
+        }
+      }
+    },
+    "NotificationChannel": {
+      "description": "A channel over which user can be notified; like FCM, APNS etc",
+      "properties": {
+        "type": {
+          "description": "Various notification channel types supported",
+          "type": "string",
+          "enum": [
+            "GCM",
+            "FCM",
+            "APNS",
+            "APNS_SANDBOX"
+          ]
+        },
+        "channelId": {
+          "type": "string",
+          "description": "Id of the channel"
+        },
+        "appVersion": {
+          "description": "Version of the app",
+          "type": "string"
+        }
+      }
+    },
+    "DeviceInfo": {
+      "description": "Info about the device that the app is running on",
+      "properties": {
+        "osName": {
+          "type": "string",
+          "description": "Operating system name"
+        },
+        "osVersion": {
+          "type": "string",
+          "description": "Operating system version"
+        },
+        "deviceType": {
+          "type": "string",
+          "description": "Device Model name or number"
+        },
+        "deviceId": {
+          "type": "string",
+          "description": "A unique identifier for the device, like IMEI"
+        },
+        "deviceIdType": {
+          "type": "string",
+          "description": "Type of the unique identifier for the device, like IMEI"
+        },
+        "registeredOn": {
+          "description": "Timestamp when the device registered its device info",
+          "type": "string",
+          "format": "date-time"
+        },
+        "extra": {
+          "type": "string",
+          "description": "Any extra available information about the device or OS, formatted as json, and then serialized into string"
+        }
+      }
+    },
+    "GetDeviceHistoryResponse": {
+      "description": "Array of DeviceInfo",
+      "properties": {
+        "deviceInfo": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DeviceInfo"
+          }
+        }
+      }
+    },
+    "MakePhoneCallRequest": {
+      "description": "Make a request for a cloud telephony phone call",
+      "properties": {
+        "userId": {
+          "description": "complete id of a user or personnel to be called",
+          "type": "string"
+        }
+      }
+    },
+    "AppInitRequest": {
+      "description": "A request containing all properties needed from app",
+      "properties": {
+        "deviceInfo": {
+          "$ref": "#/definitions/DeviceInfo"
+        },
+        "shiftDate": {
+          "description": "local date for fetching tours",
+          "type": "string"
+        },
+        "dryRun": {
+          "type": "boolean",
+          "description": "Boolean denoting that the rider state should not be updated; instead just the expected output is returned. Default value is false. deviceInfo is not required if dryRun is set to true",
+          "default": false
+        }
+      }
+    },
+    "SdkInitRequest": {
+      "description": "A request containing all properties needed from sdk",
+      "properties": {
+        "deviceInfo": {
+          "$ref": "#/definitions/DeviceInfo"
+        },
+        "dryRun": {
+          "type": "boolean",
+          "description": "Boolean denoting that the rider state should not be updated; instead just the expected output is returned. Default value is false. deviceInfo is not required if dryRun is set to true",
+          "default": false
+        }
+      }
+    },
+    "AppSettingsLogRequest": {
+      "description": "A log of app settings",
+      "properties": {
+        "createdOn": {
+          "type": "string",
+          "format": "date-time",
+          "description": "time at which the log was recorded"
+        },
+        "appVersion": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "locationMode": {
+          "type": "string",
+          "description": "the location mode the app is currently in"
+        },
+        "mobileData": {
+          "type": "boolean",
+          "description": "boolean to indicate whether mobile data is on"
+        },
+        "unsentCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "number of messages in queue"
+        },
+        "settings": {
+          "type": "string",
+          "description": "string serialized dump of all settings"
+        },
+        "locationLastCapturedOn": {
+          "type": "string",
+          "format": "date-time",
+          "description": "time at which user's location was last available"
+        }
+      }
+    },
+    "FileUploadResponse": {
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "SUCCESS"
+          ]
+        }
+      }
+    },
+    "Task": {
+      "description": "A delivery or a pickup order",
+      "properties": {
+        "clientId": {
+          "type": "string",
+          "description": "Id of the client who added this task"
+        },
+        "taskId": {
+          "type": "string",
+          "description": "Id of the task that client knows"
+        },
+        "status": {
+          "$ref": "#/definitions/TaskStatus",
+          "description": "Status of the task"
+        },
+        "sourceOrderId": {
+          "type": "string",
+          "description": "Order Id for which this task is being generated"
+        },
+        "orderDetail": {
+          "$ref": "#/definitions/OrderDetail"
+        },
+        "assignedUser": {
+          "$ref": "#/definitions/AssignedUser",
+          "description": "A user to whom this task is assigned"
+        },
+        "creationTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Time of order creation, in UTC using the standard ISO 8601 format"
+        },
+        "completionTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Time of task completion, in UTC using the standard ISO 8601 format"
+        },
+        "checklists": {
+          "description": "A list of checklists to be shown to the delivery person on the app. Currently, only applies to  COMPLETED and CANCELLED task statuses. For COMPLETED status, you can provide a list of BOOLEAN checklist items; each of which will render as a checkbox. For CANCELLED status, you can provide only one SINGLE_CHOICE item, containing multiple cancellation reasons; each of which will render in a radio-button group.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Checklist"
+          }
+        },
+        "statusUpdates": {
+          "description": "List of task status updates, in the order they happen. This can have multiple entries for a status if the status was updated multiple times.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TaskStatus"
+          }
+        },
+        "customFields": {
+          "description": "Key value pair for custom properties that clients may want to maintain",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "taskGraph": {
+          "description": "Graph representation of the task",
+          "$ref": "#/definitions/TaskGraph"
+        },
+        "carrierTeams": {
+          "description": "List of teams of carrier client to consider for this task assignment",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TeamId"
+          }
+        },
+        "taskAppConfig": {
+          "description": "Task level configuration setting that overrides app config settings",
+          "$ref": "#/definitions/TaskAppConfig"
+        }
+      }
+    },
+    "MinimalEtaWrapper": {
+      "description": "Minimal ETAs for a visit status",
+      "properties": {
+        "currentEta": {
+          "description": "Current ETA for this status",
+          "$ref": "#/definitions/MinimalEta"
+        }
+      }
+    },
+    "MinimalEta": {
+      "description": "ETA related information",
+      "properties": {
+        "arrivalTime": {
+          "description": "Time of arrival",
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "AssignedUser": {
+      "description": "A user to whom the task can be assigned",
+      "properties": {
+        "carrierClientId": {
+          "type": "string",
+          "description": "Id of the client who will fulfill the order. Typically, this would be your clientId itself."
+        },
+        "userId": {
+          "type": "string",
+          "description": "Id of the delivery person within the above client"
+        }
+      }
+    },
+    "UpdateTimeSlotRequest": {
+      "properties": {
+        "slot": {
+          "$ref": "#/definitions/TimeSlot"
+        },
+        "dryRun": {
+          "type": "boolean",
+          "description": "Boolean denoting that the task should not be acutally updated; instead just the expected output is returned. Default value is false.",
+          "default": false
+        }
+      }
+    },
+    "GetTimeSlotsResponse": {
+      "properties": {
+        "slots": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TimeSlot"
+          }
+        }
+      }
+    },
+    "TimeSlot": {
+      "description": "A time slot for an event.",
+      "properties": {
+        "start": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Start time of the slot, in UTC using the standard ISO 8601 format"
+        },
+        "end": {
+          "type": "string",
+          "format": "date-time",
+          "description": "End time of the slot, in UTC using the standard ISO 8601 format"
+        }
+      }
+    },
+    "TaskStatusRequest": {
+      "description": "A wrapper for task status, with location and time information.",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "RECEIVED",
+            "WAITING",
+            "ACCEPTED",
+            "STARTED",
+            "COMPLETED",
+            "CANCELLED",
+            "ERROR"
+          ]
+        },
+        "triggerTime": {
+          "description": "Time when the task update was triggered on the client side",
+          "type": "string",
+          "format": "date-time"
+        },
+        "checklistValues": {
+          "description": "A map containing selected values for each checklist item.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "TaskStatus": {
+      "description": "A wrapper for task status, with location and time information.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/TaskStatusRequest"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "receiveTime": {
+              "description": "Time when the task update was received on the server.",
+              "type": "string",
+              "format": "date-time"
+            },
+            "location": {
+              "description": "Location of the delivery person at the time of the update.",
+              "$ref": "#/definitions/MinimalLocation"
+            },
+            "actor": {
+              "description": "Actor who triggered this status update",
+              "$ref": "#/definitions/Actor"
+            },
+            "assignedUser": {
+              "$ref": "#/definitions/AssignedUser"
+            }
+          }
+        }
+      ]
+    },
+    "MinimalLocation": {
+      "description": "A location, usually measured via some sensor - GPS, wifi, cell network etc",
+      "properties": {
+        "lat": {
+          "type": "number",
+          "format": "double"
+        },
+        "lng": {
+          "type": "number",
+          "format": "double"
+        },
+        "accuracy": {
+          "type": "number",
+          "format": "double",
+          "description": "For a measured location, the accuracy of the measurement, defined as the radius of circle of 68% confidence, in meters."
+        },
+        "timestamp": {
+          "type": "integer",
+          "format": "int64",
+          "description": "timestamp of when this location fix was obtained, in millis since epoch"
+        },
+        "distance": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Distance that user has travelled so far in reaching this location, within current trip"
+        }
+      }
+    },
+    "Actor": {
+      "description": "An actor who can take actions on an entity",
+      "properties": {
+        "id": {
+          "description": "Id of the actor",
+          "type": "string"
+        }
+      }
+    },
+    "OrderDetail": {
+      "description": "Details about the order, line items, amount etc",
+      "properties": {
+        "lineItems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LineItem"
+          }
+        },
+        "transactionDetail": {
+          "$ref": "#/definitions/OrderTransactionDetail"
+        },
+        "cratingInfo": {
+          "$ref": "#/definitions/CratingInfo"
+        }
+      }
+    },
+    "OrderTransactionDetail": {
+      "properties": {
+        "canTransactPartial": {
+          "description": "A flag to denote whether order can be transacted partially or not",
+          "type": "boolean",
+          "default": false
+        },
+        "checklist": {
+          "$ref": "#/definitions/Checklist"
+        }
+      }
+    },
+    "LineItem": {
+      "description": "A single item contained in the order",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the item"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Quantity of the item"
+        },
+        "id": {
+          "type": "string",
+          "description": "An identifier for the line item"
+        },
+        "price": {
+          "$ref": "#/definitions/Amount",
+          "description": "Price of the item"
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "A url for an image of the item"
+        },
+        "transactionStatus": {
+          "$ref": "#/definitions/TransactionStatus"
+        },
+        "packageInfo": {
+          "$ref": "#/definitions/ItemPackagingInfo"
+        }
+      }
+    },
+    "TransactionStatus": {
+      "properties": {
+        "transactedQuantity": {
+          "description": "Quantity of the item that has been transacted",
+          "type": "integer",
+          "format": "int32"
+        },
+        "checklistValues": {
+          "description": "A map containing selected values for each checklist item.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "triggerTime": {
+          "description": "Time when the transaction status update was triggered on the client side",
+          "type": "string",
+          "format": "date-time"
+        },
+        "receiveTime": {
+          "description": "Time when the transaction status update was received on Locus server",
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "ItemPackagingInfo": {
+      "description": "Packaging information",
+      "properties": {
+        "isCrated": {
+          "type": "boolean",
+          "description": "indicates if the item is crated",
+          "default": false
+        },
+        "cartons": {
+          "type": "integer",
+          "format": "int32",
+          "description": "number of cartons of the item",
+          "default": 0
+        },
+        "pieces": {
+          "type": "integer",
+          "format": "int32",
+          "description": "number of pieces of the item that is crated or remaining items",
+          "default": 0
+        }
+      }
+    },
+    "CratingInfo": {
+      "description": "crating info",
+      "properties": {
+        "crates": {
+          "type": "integer",
+          "format": "int32",
+          "description": "number of crates",
+          "default": 0
+        }
+      }
+    },
+    "PaymentInstrument": {
+      "description": "A method of payment",
+      "properties": {
+        "instrumentType": {
+          "$ref": "#/definitions/PaymentInstrumentType"
+        },
+        "instrumentName": {
+          "description": "A human friendly name for the payment instrument",
+          "type": "string"
+        },
+        "providerInstrumentId": {
+          "$ref": "#/definitions/ProviderInstrumentId",
+          "description": "Might not be applicable for all instrument types."
+        }
+      }
+    },
+    "ProviderInstrumentId": {
+      "description": "Id of the payment instrument as identified by a provider",
+      "properties": {
+        "providerId": {
+          "description": "Id of payment instrument provider. For eg, razor-pay for RazorPay instruments. This should be one of the supported values.",
+          "type": "string"
+        },
+        "instrumentId": {
+          "description": "Id of the payment instrument as identified by the provider.",
+          "type": "string"
+        }
+      }
+    },
+    "PaymentInstrumentType": {
+      "description": "Denotes the type of payment instrument",
+      "type": "string",
+      "enum": [
+        "CASH",
+        "COUPON",
+        "ECOD",
+        "ONLINE"
+      ]
+    },
+    "PaymentId": {
+      "description": "Id of the payment instrument as identified by a provider",
+      "properties": {
+        "instrumentId": {
+          "$ref": "#/definitions/ProviderInstrumentId"
+        },
+        "paymentId": {
+          "description": "Id for the payment as identified by the provider.",
+          "type": "string"
+        }
+      }
+    },
+    "Payment": {
+      "description": "A payment request, through any of the payment instruments.",
+      "properties": {
+        "instrument": {
+          "$ref": "#/definitions/PaymentInstrument",
+          "description": "Instrument involved"
+        },
+        "paymentId": {
+          "$ref": "#/definitions/PaymentId",
+          "description": "Id for the payment. Applicable for only ECOD, and ONLINE payments."
+        },
+        "desiredAmount": {
+          "$ref": "#/definitions/Amount",
+          "description": "Amount that is expected to be charged. Invoice would have been generated for this amount."
+        },
+        "actualAmount": {
+          "$ref": "#/definitions/Amount",
+          "description": "Amount that was actually charged."
+        },
+        "amountEditable": {
+          "type": "boolean",
+          "description": "Boolean that denotes whether or not amount can be edited after the invoice is generated. This can support partial payments."
+        },
+        "status": {
+          "$ref": "#/definitions/PaymentStatus"
+        },
+        "createdOn": {
+          "description": "Timestamp of creation",
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedOn": {
+          "description": "Timestamp of last update",
+          "type": "string",
+          "format": "date-time"
+        },
+        "additionalInfo": {
+          "description": "Additional information that needs to be shared for the payment",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "PaymentStatus": {
+      "description": "Status of the payment",
+      "type": "string",
+      "enum": [
+        "PENDING",
+        "SUCCESS",
+        "FAILED",
+        "CANCELLED"
+      ]
+    },
+    "Payments": {
+      "description": "Container for all payment related info",
+      "properties": {
+        "totalAmount": {
+          "description": "Total amount that has to be paid",
+          "$ref": "#/definitions/Amount"
+        },
+        "pendingAmount": {
+          "description": "Remaining amount that has to be paid",
+          "$ref": "#/definitions/Amount"
+        },
+        "paymentInstruments": {
+          "description": "Payment instruments that can be used",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PaymentInstrument"
+          }
+        },
+        "payments": {
+          "description": "All payments associated with this. Can be in any status - successful, failed, pending etc.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Payment"
+          }
+        },
+        "fullAmountRequired": {
+          "type": "boolean",
+          "default": false,
+          "description": "Boolean to denote that full payment amount is required before completing the task."
+        }
+      }
+    },
+    "UpdatePaymentRequest": {
+      "description": "Update payment request object",
+      "properties": {
+        "payments": {
+          "description": "All payments to be updated.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Payment"
+          }
+        }
+      }
+    },
+    "UpdateLineItemTransactionRequest": {
+      "description": "Update line item transaction request object",
+      "properties": {
+        "lineItemsTransactionStatus": {
+          "description": "A list containing transaction status for each line item",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LineItemTransactionStatus"
+          }
+        }
+      }
+    },
+    "LineItemTransactionStatus": {
+      "description": "Transaction status of a line item",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "id of the line item"
+        },
+        "transactionStatus": {
+          "$ref": "#/definitions/TransactionStatus"
+        }
+      }
+    },
+    "Amount": {
+      "description": "Amount of an item",
+      "properties": {
+        "amount": {
+          "type": "number",
+          "format": "double"
+        },
+        "currency": {
+          "type": "string",
+          "description": "Currency for the amount. Value should be one of the active codes of official ISO 4217 currency names. Examples are INR, USD, AED, GBP etc"
+        },
+        "symbol": {
+          "type": "string",
+          "description": "A symbol for the currency. If missing, will default to currency string."
+        }
+      }
+    },
+    "AmountTransaction": {
+      "description": "Transaction of an amount.",
+      "properties": {
+        "amount": {
+          "description": "Amount that needs to be transacted",
+          "$ref": "#/definitions/Amount"
+        },
+        "exchangeType": {
+          "description": "Type of transaction.",
+          "type": "string",
+          "enum": [
+            "COLLECT",
+            "GIVE",
+            "NONE"
+          ]
+        }
+      }
+    },
+    "LatLng": {
+      "description": "A latitude, longitude pair",
+      "properties": {
+        "lat": {
+          "type": "number",
+          "format": "double"
+        },
+        "lng": {
+          "type": "number",
+          "format": "double"
+        },
+        "accuracy": {
+          "description": "Accuracy of lat,lng in meters. If the lat,lng denotes a certain region instead of the exact address, this field can be used to denote the accuracy of the same. For example, if the lat,lng denotes a region of 2km x 2km, put this value as 2000. A value of 0 or a null value denotes that lat,lng is exact.",
+          "type": "integer",
+          "format": "int32",
+          "default": 0
+        }
+      }
+    },
+    "Location": {
+      "description": "A location, usually measured via some sensor - GPS, wifi, cell network etc",
+      "properties": {
+        "lat": {
+          "type": "number",
+          "format": "double"
+        },
+        "lng": {
+          "type": "number",
+          "format": "double"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the place, typically as provided by some Google API - could be Places API"
+        },
+        "address": {
+          "type": "string",
+          "description": "Address of the place, typically as provided by some Google API - could be Places API, Geocoding API etc"
+        },
+        "accuracy": {
+          "type": "number",
+          "format": "double",
+          "description": "For a measured location, the accuracy of the measurement, defined as the radius of 68% confidence, in meters."
+        },
+        "provider": {
+          "type": "string",
+          "description": "For a measured location, the provider of the location, like, GPS or network etc"
+        },
+        "timestamp": {
+          "type": "integer",
+          "format": "int64",
+          "description": "timestamp of when this location fix was obtained, in millis since epoch"
+        },
+        "speed": {
+          "type": "number",
+          "format": "float",
+          "description": "Measured speed at the location, in meters per second"
+        },
+        "direction": {
+          "type": "number",
+          "format": "float",
+          "description": "direction of travel, in degrees East of true north"
+        },
+        "distance": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Distance that user has travelled so far in reaching this location, within current trip"
+        },
+        "gpsEnabled": {
+          "type": "boolean",
+          "description": "Boolean denoting whether GPS was on at the time of this location fix or not"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "PLACE",
+            "DROPPED_PIN"
+          ]
+        },
+        "valid": {
+          "type": "boolean",
+          "description": "Boolean denoting whether this is a valid location. Locus system will decide the validity of location based on accuracy, and harmony with other locations within the current trip"
+        }
+      }
+    },
+    "BatteryStatus": {
+      "description": "Current battery status",
+      "properties": {
+        "charge": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Percentage charge remaining. -1 if status unavailable"
+        },
+        "expectedLife": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Expected duration (in mins) for remaining battery life. -1 if status unavailable"
+        },
+        "chargingStatus": {
+          "type": "string",
+          "enum": [
+            "PLUGGED_USB",
+            "PLUGGED_AC",
+            "CHARGING",
+            "NONE",
+            "UNAVAILABLE"
+          ]
+        },
+        "timestamp": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Timestamp of the battery status, in millis from epoch"
+        }
+      }
+    },
+    "LocationUpdateRequestWrapper": {
+      "properties": {
+        "location": {
+          "$ref": "#/definitions/Location"
+        },
+        "batteryStatus": {
+          "$ref": "#/definitions/BatteryStatus"
+        }
+      }
+    },
+    "Checklist": {
+      "description": "A list of checklist items",
+      "properties": {
+        "status": {
+          "description": "Status to which this checklist needs to apply",
+          "type": "string"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChecklistItem"
+          }
+        }
+      }
+    },
+    "ChecklistItem": {
+      "properties": {
+        "key": {
+          "description": "An identifier for this checklist item",
+          "type": "string"
+        },
+        "item": {
+          "description": "String representation of the checklist item, to be displayed on the app",
+          "type": "string"
+        },
+        "format": {
+          "description": "\nInput format for the checklist item. Can be BOOLEAN, SINGLE_CHOICE, PIN, SIGNATURE, or PHOTO.\n\nBOOLEAN field will be displayed as a checkbox, which delivery person can either check or uncheck.\n\nSINGLE_CHOICE will be displayed as a group of radio buttons from which delivery person can choose one.\n\nTEXT_FIELD will be displayed as a free form text box.\n\nPIN will be a code sent to customer which will need to be entered into the app.\n\nSIGNATURE will let the delivery person collect a signature from customer.\n\nPHOTO will let delivery person click a picture of the item.\n\nRATING will be displayed as stars for taking feedback.\n\nURL will be displayed as a clickable url\n\nDATE will be displayed as a date entry box\n\nTIME will be displayed a time selection field\n\nDATETIME will be displayed as a calendar entry box with time\n",
+          "type": "string",
+          "enum": [
+            "BOOLEAN",
+            "SINGLE_CHOICE",
+            "TEXT_FIELD",
+            "PIN",
+            "SIGNATURE",
+            "PHOTO",
+            "RATING",
+            "URL",
+            "DATE",
+            "TIME",
+            "DATETIME"
+          ]
+        },
+        "possibleValues": {
+          "description": "Possible values for the item, depending on the format field. For a SINGLE_CHOICE, values will be strings to display. For PIN, it should be the actual code. For URL, it should be the URL to display and link to. For BOOLEAN, TEXT_FIELD, SIGNATURE and PHOTO, value isn't required.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "allowedValues": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChecklistPossibleValue"
+          }
+        },
+        "optional": {
+          "type": "boolean",
+          "default": false
+        },
+        "additionalOptions": {
+          "description": "\nAny additional options to customize the behavior of the checklist item.\nFor TEXT_FIELD, the key \"inputType\" can have values \"DEFAULT\", \"PHONE\", \"NUMBER\", \"DECIMAL\", \"EMAIL_ADDRESS\" or \"PASSWORD\" that determines the type of keyboard that appears.\nThe key \"regex\" can be given a regular expression as the value that will be used to validate the TEXT_FIELD contents.\nThe key \"errorMessage\" sets a custom error message if the text does not conform to the given regex.\n",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ChecklistPossibleValue": {
+      "properties": {
+        "key": {
+          "description": "identifier of checklist item value",
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "GetUnackedMessagesResponse": {
+      "description": "Response of getUnackedMessages API",
+      "properties": {
+        "messages": {
+          "description": "List of messages",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ControlEventWrapper"
+          }
+        }
+      }
+    },
+    "GetUnackedMessagesBulkResponse": {
+      "description": "Response of getUnackedMessagesBulk API",
+      "properties": {
+        "ackMessages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AckMessage"
+          }
+        },
+        "tasks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Task"
+          }
+        },
+        "tourResponses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UserToursResponse"
+          }
+        },
+        "user": {
+          "$ref": "#/definitions/User"
+        },
+        "configUpdateEvent": {
+          "$ref": "#/definitions/AppConfigUpdateEvent"
+        },
+        "stateDumpEvent": {
+          "$ref": "#/definitions/StateDumpEvent"
+        },
+        "logoutEvent": {
+          "$ref": "#/definitions/LogoutUserEvent"
+        },
+        "appUpdateEvent": {
+          "$ref": "#/definitions/AppUpdateEvent"
+        }
+      }
+    },
+    "ControlEventWrapper": {
+      "description": "A container for all events that server will send to client apps.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "An identifier for the event. Client apps should send an ack to server using this id, via ackMessage API."
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "TASK_UPDATE",
+            "USER_UPDATE",
+            "STATE_DUMP",
+            "CONFIG_UPDATE",
+            "LOGOUT_USER",
+            "TOUR_UPDATE",
+            "APP_UPDATE"
+          ],
+          "description": "Type of the message. Corresponds to one of the types of the messages that server can send to the client. Client should use it to decide which object type to deserialize the event into"
+        },
+        "timestamp": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Timestamp when the message was generated, in millis since epoch"
+        },
+        "eventString": {
+          "type": "string",
+          "description": "Actual event serialized as json"
+        },
+        "tag": {
+          "type": "string"
+        }
+      }
+    },
+    "AckMessage": {
+      "properties": {
+        "messageId": {
+          "type": "string",
+          "description": "Id of the message for which ack is being sent"
+        },
+        "receiveTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Timestamp when the message was received, in millis since epoch"
+        }
+      }
+    },
+    "AckMessagesBulk": {
+      "properties": {
+        "messages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AckMessage"
+          }
+        },
+        "receiveTime": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Timestamp when the message was received, in millis since epoch"
+        }
+      }
+    },
+    "LogoutUserEvent": {
+      "description": "An event to trigger logout of the user from the app. Corresponds to LOGOUT_USER control event.",
+      "properties": {
+        "forceLogout": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "AppConfigUpdateEvent": {
+      "description": "An event to trigger update of config for a client app. Corresponds to CONFIG_UPDATE control event type",
+      "properties": {
+        "config": {
+          "$ref": "#/definitions/ClientAppConfig"
+        }
+      }
+    },
+    "AppUpdateEvent": {
+      "description": "An event to trigger a check for app update and download the update",
+      "properties": {
+        "unused": {
+          "type": "string"
+        }
+      }
+    },
+    "StateDumpEvent": {
+      "description": "An event to trigger state dump of a client app. This is used only for debugging purposes. Corresponds to STATE_DUMP control event type",
+      "properties": {
+        "unused": {
+          "type": "string"
+        }
+      }
+    },
+    "AppInitializationResponse": {
+      "description": "Response containing initialization data for app",
+      "properties": {
+        "config": {
+          "$ref": "#/definitions/ClientAppConfig"
+        },
+        "user": {
+          "$ref": "#/definitions/User"
+        },
+        "userToursResponse": {
+          "$ref": "#/definitions/UserToursResponse"
+        },
+        "client": {
+          "$ref": "#/definitions/Client"
+        }
+      }
+    },
+    "SdkInitializationResponse": {
+      "description": "Response containing initialization data for sdk",
+      "properties": {
+        "config": {
+          "$ref": "#/definitions/ClientAppConfig"
+        },
+        "user": {
+          "$ref": "#/definitions/User"
+        }
+      }
+    },
+    "ClientAppConfig": {
+      "description": "A container for client specific configuration to be applied to Locus delivery app.",
+      "properties": {
+        "defaultLocale": {
+          "description": "Default locale to use on the delivery boy app.",
+          "$ref": "#/definitions/Locale"
+        },
+        "userLocationPollingParam": {
+          "description": "Location polling frequency for the user",
+          "$ref": "#/definitions/LocationPollingParam"
+        },
+        "enableAllTasks": {
+          "description": "Boolean to denote that all tasks should be enabled to be actioned upon.",
+          "type": "boolean",
+          "default": true
+        },
+        "autoTriggerNext": {
+          "description": "Boolean to denote that next visit should be auto triggered, if it is eligible.",
+          "type": "boolean",
+          "default": true
+        },
+        "autoTriggerNextHomebase": {
+          "description": "Boolean to denote that next visit, if homebase, should be auto triggered, if it is eligible.",
+          "type": "boolean",
+          "default": false
+        },
+        "skipStatuses": {
+          "description": "List of statuses for which actions should be skipped from the app.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notifyStatuses": {
+          "description": "List of statuses for which notifications should be generated if transition was not user initiated.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "autoAccept": {
+          "description": "Boolean to denote task should be auto accepted",
+          "type": "boolean",
+          "default": false
+        },
+        "offlineActions": {
+          "description": "Boolean to denote that all actions should be offline",
+          "type": "boolean",
+          "default": true
+        },
+        "autoStartOnAccept": {
+          "description": "Boolean to denote that task should be auto started after accepted",
+          "type": "boolean",
+          "default": false
+        },
+        "hideCancel": {
+          "description": "Boolean to denote that task should not be allowed to be cancelled",
+          "type": "boolean",
+          "default": false
+        },
+        "hideReject": {
+          "description": "Boolean to denote that task should not be allowed to be rejected",
+          "type": "boolean",
+          "default": false
+        },
+        "allowVisitReschedule": {
+          "description": "Boolean to denote that rescheduling visits is allowed",
+          "type": "boolean",
+          "default": false
+        },
+        "collectLocations": {
+          "description": "Boolean to denote that mobile device should collect locations",
+          "type": "boolean",
+          "default": true
+        },
+        "locationStaleTime": {
+          "description": "Time in seconds after which a location should be considered stale",
+          "type": "integer",
+          "format": "int32",
+          "default": 600
+        },
+        "etaPollingPeriod": {
+          "description": "Frequency at which app will poll for eta updates",
+          "type": "integer",
+          "format": "int32",
+          "default": 300
+        },
+        "bulkUpdateLimit": {
+          "description": "Max number of updates to send in one bulk update",
+          "type": "integer",
+          "format": "int32",
+          "default": 1000
+        },
+        "urlHandler": {
+          "description": "Specifies what will handle url links in the application",
+          "type": "string",
+          "enum": [
+            "WEBVIEW",
+            "CHROME"
+          ],
+          "default": "WEBVIEW"
+        },
+        "phoneCallMethod": {
+          "description": "Specifies the method to make phone calls to contact at visit",
+          "type": "string",
+          "enum": [
+            "PHONE",
+            "CLOUD_TELEPHONY"
+          ],
+          "default": "PHONE"
+        },
+        "hideChangeUserStatus": {
+          "type": "boolean",
+          "default": false
+        },
+        "requiresWifiEnabled": {
+          "description": "Requires the mobile device's wifi to be switched ON",
+          "type": "boolean",
+          "default": true
+        },
+        "enableUiBlockingDialogs": {
+          "description": "Specifies if UI dialogs are blocking",
+          "type": "boolean",
+          "default": true
+        },
+        "sensorPollingParam": {
+          "$ref": "#/definitions/SensorPollingParam"
+        },
+        "locationSetting": {
+          "$ref": "#/definitions/LocationSetting"
+        },
+        "asyncCommunicationSetting": {
+          "$ref": "#/definitions/AsyncCommunicationSetting"
+        },
+        "taskAppConfig": {
+          "$ref": "#/definitions/TaskAppConfig"
+        },
+        "visitAppConfig": {
+          "$ref": "#/definitions/VisitAppConfig"
+        },
+        "clientProfile": {
+          "$ref": "#/definitions/ClientProfile"
+        },
+        "checklistSetting": {
+          "$ref": "#/definitions/ChecklistSetting"
+        },
+        "acceptTaskPopupFrequency": {
+          "description": "Time Interval at which Accept/Reject Task Popup is shown",
+          "type": "integer",
+          "format": "int32",
+          "default": 30
+        },
+        "notifyTaskCompletionConfig": {
+          "$ref": "#/definitions/NotifyTaskCompletionConfig"
+        },
+        "displayConfig": {
+          "$ref": "#/definitions/DisplayConfig"
+        },
+        "navigationConfig": {
+          "$ref": "#/definitions/NavigationConfig"
+        },
+        "securityConfig": {
+          "$ref": "#/definitions/SecurityConfig"
+        },
+        "enableSingleStartedTask": {
+          "description": "Boolean to denote enabling single task start",
+          "type": "boolean",
+          "default": false
+        },
+        "canUpdatePhoto": {
+          "description": "Boolean to indicate that photo can be updated or not",
+          "type": "boolean",
+          "default": false
+        },
+        "canUpdateName": {
+          "description": "Boolean to indicate that name can be updated or not",
+          "type": "boolean",
+          "default": false
+        },
+        "showOverviewMap": {
+          "type": "boolean",
+          "description": "Whether Overview Map is to be displayed"
+        },
+        "allowStartMultipleTrips": {
+          "description": "Boolean to indicate if multiple trips can be started",
+          "type": "boolean",
+          "default": false
+        },
+        "allowChangePassword": {
+          "description": "Boolean to indicate if password change is allowed",
+          "type": "boolean",
+          "default": false
+        },
+        "shouldClubHomebases": {
+          "description": "Boolean to indicate if homebase clubbing should be done",
+          "type": "boolean",
+          "default": false
+        },
+        "appPermissionsConfig": {
+          "$ref": "#/definitions/AppPermissionsConfig"
+        },
+        "enforceGeofenceForCompletion": {
+          "description": "Boolean to indicate if task should only be allowed to be marked complete in geofence",
+          "type": "boolean",
+          "default": false
+        },
+        "taskCompletionGeofenceRadius": {
+          "description": "Radius in meters for task completetion geofence",
+          "type": "integer",
+          "format": "int32",
+          "default": 50
+        },
+        "phoneVerificationConfig": {
+          "$ref": "#/definitions/PhoneVerificationConfig"
+        },
+        "lotrFeatureConfig": {
+          "$ref": "#/definitions/LotrFeatureConfig"
+        }
+      }
+    },
+    "SecurityConfig": {
+      "properties": {
+        "allowCaptureScreenshots": {
+          "description": "Boolean to denote if capturing screenshots is allowed",
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "TaskAppConfig": {
+      "description": "A container for task level configuration settings to be applied to Locus delivery app",
+      "properties": {
+        "autoAccept": {
+          "description": "Boolean to denote task should be auto accepted",
+          "type": "boolean"
+        },
+        "autoStartOnAccept": {
+          "description": "Boolean to denote that task should be auto started after accepted",
+          "type": "boolean"
+        },
+        "hideCancel": {
+          "description": "Boolean to denote that task should not be allowed to be cancelled",
+          "type": "boolean"
+        },
+        "hideReject": {
+          "description": "Boolean to denote that task should not be allowed to be rejected",
+          "type": "boolean"
+        },
+        "hideRejectAfterAccept": {
+          "description": "Boolean to denote that task should not be allowed to be rejected after accepted",
+          "type": "boolean"
+        },
+        "nearbyTaskDistanceThreshold": {
+          "description": "Threshold to differentiate if task location is nearby. In meters.",
+          "type": "integer",
+          "format": "int32",
+          "default": 50
+        }
+      }
+    },
+    "VisitAppConfig": {
+      "description": "A container for visit level configuration settings to be applied to Locus delivery app",
+      "properties": {
+        "skipStatuses": {
+          "description": "List of statuses for which actions should be skipped from the app.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "allowVisitReschedule": {
+          "description": "Boolean to denote that rescheduling visits is allowed",
+          "type": "boolean"
+        },
+        "blockCompletion": {
+          "description": "prevent visit from being completed",
+          "type": "boolean"
+        },
+        "allowZeroItemVisitCompletion": {
+          "description": "Boolean to denote that completion of visit should be allowed even if 0 items are picked/delivered. If false visit will be cancelled instead.",
+          "type": "boolean"
+        },
+        "enforceSingleTransaction": {
+          "description": "Boolean to denote that during transaction of a visit, no actions on other visits are allowed",
+          "type": "boolean"
+        }
+      }
+    },
+    "ClientProfile": {
+      "description": "A container for client profile items",
+      "properties": {
+        "items": {
+          "description": "Items to be populated on Locus delivery app",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ClientProfileItem"
+          }
+        }
+      }
+    },
+    "ClientProfileItem": {
+      "description": "Client profile item to be populated on Locus delivery app",
+      "properties": {
+        "action": {
+          "description": "Action to take when activated",
+          "type": "string",
+          "enum": [
+            "INTENT",
+            "URL",
+            "NONE",
+            "IMPLICIT_INTENT"
+          ],
+          "default": "NONE"
+        },
+        "arguments": {
+          "description": "Arguments to be used to perform the required action",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "SensorPollingParam": {
+      "description": "A container for client specific configuration to be applied to Locus delivery app.",
+      "properties": {
+        "holdWakeLock": {
+          "type": "boolean",
+          "default": true
+        },
+        "quickGpsPollingInterval": {
+          "type": "integer",
+          "format": "int32",
+          "default": 10
+        },
+        "slowGpsPollingInterval": {
+          "type": "integer",
+          "format": "int32",
+          "default": 60
+        },
+        "gpsMaxWaitTime": {
+          "type": "integer",
+          "format": "int32",
+          "default": 30
+        },
+        "activityDetectionInterval": {
+          "type": "integer",
+          "format": "int32",
+          "default": 20
+        }
+      }
+    },
+    "LocationSetting": {
+      "description": "A container for location settings",
+      "properties": {
+        "collectLocations": {
+          "description": "Boolean to denote that mobile device should collect locations",
+          "type": "boolean",
+          "default": true
+        },
+        "locationStaleTime": {
+          "description": "Time in seconds after which a location should be considered stale",
+          "type": "integer",
+          "format": "int32",
+          "default": 600
+        },
+        "warnInaccurateLocation": {
+          "description": "Show popup warning for inaccurate locations",
+          "type": "boolean",
+          "default": false
+        },
+        "allowMockLocation": {
+          "description": "Allow GPS Locations to be mocked",
+          "type": "boolean",
+          "default": false
+        },
+        "provider": {
+          "description": "Service that will be used to obtain locations on app",
+          "$ref": "#/definitions/LocationProvider"
+        },
+        "providerOverride": {
+          "description": "Provider flag to overwrite the global default. If its null, provider will be defaulted to global default otherwise this value will be used",
+          "$ref": "#/definitions/LocationProvider"
+        },
+        "skyhookKey": {
+          "description": "API key for using Skyhook Location Services",
+          "type": "string"
+        },
+        "skyhookTilingSettings": {
+          "description": "Settings for tiling on skyhook",
+          "$ref": "#/definitions/SkyhookTilingSettings"
+        }
+      }
+    },
+    "LocationProvider": {
+      "description": "Service that will be used to obtain locations on app",
+      "type": "string",
+      "enum": [
+        "GOOGLE",
+        "SKYHOOK"
+      ]
+    },
+    "ChecklistSetting": {
+      "description": "A container for checklist settings",
+      "properties": {
+        "imageQuality": {
+          "description": "Quality of images sent as checklist item pod. LOW is ~0.5MP, MEDIUM is ~1.9MP, HIGH is ~4.3MP (MP = MegaPixels)\nWARNING: Setting higher qualities will increase quantity of data transferred over the network\n",
+          "type": "string",
+          "enum": [
+            "LOW",
+            "MEDIUM",
+            "HIGH"
+          ],
+          "default": "LOW"
+        },
+        "enableCropping": {
+          "description": "If true, let rider crop the POD when captured",
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "SkyhookTilingSettings": {
+      "description": "A container for skyhook's tiling settings",
+      "properties": {
+        "edgeLength": {
+          "description": "Length of edge of surrounding area to be tiled for offline use (in meters)",
+          "type": "integer",
+          "format": "int32",
+          "default": 5000
+        },
+        "numberOfRegions": {
+          "description": "Number of regions to tile. Recommended value between (2-10)",
+          "type": "integer",
+          "format": "int32",
+          "default": 3
+        },
+        "percentFreeSpaceLimit": {
+          "description": "Limit the space consumed by tiling to a percentage of free disk space, (Range 1 - 100)",
+          "type": "integer",
+          "format": "int32",
+          "default": 20
+        }
+      }
+    },
+    "AsyncCommunicationSetting": {
+      "description": "A container for asynchronous communications settings",
+      "properties": {
+        "batchMinCount": {
+          "description": "Integer to indicate the minimum number of updates required to be accumulated in queue before an API call is made",
+          "type": "integer",
+          "format": "int32",
+          "default": 5
+        },
+        "batchUpdatesTimeout": {
+          "description": "Integer to indicate the number of seconds after which an API call is forcefully allowed, regardless of number of updates in queue",
+          "type": "integer",
+          "format": "int32",
+          "default": 120
+        }
+      }
+    },
+    "Locale": {
+      "description": "Locale of the device, like en_US or fr_FR",
+      "properties": {
+        "lang": {
+          "type": "string",
+          "description": "Language part of locale, like en or fr"
+        },
+        "country": {
+          "type": "string",
+          "description": "Country part of locale, like US or FR"
+        }
+      }
+    },
+    "LocationPollingParam": {
+      "description": "Set of values guiding how frequently the location should be polled",
+      "properties": {
+        "leftDistance": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Distance threshold for current location from destination, in meters. This acts as criteria to decide whether this instance of param should be used or not. If distance of the current location from destination is less than this value, then this should be used to tune the polling frequency."
+        },
+        "minChange": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Minimum change in location (in meters) from previous value, after which a location should be recorded and communicated to server."
+        },
+        "maxTimeGap": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Maximum amount of time (in seconds) that should elapse betwen two location updates, irrespective of whether there was a significant change or not. After this much gap, a location should be recorded and communicated to server."
+        },
+        "minTimeGap": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Minimum amount of time (in seconds) that should elapse betwen two location updates. Locations shouldn't be collected more frequently than this.",
+          "default": 5
+        }
+      }
+    },
+    "NotifyTaskCompletionConfig": {
+      "description": "Notify User to complete Visit once marked arrived",
+      "properties": {
+        "enable": {
+          "description": "If true, notifies user to update status after arriving",
+          "type": "boolean",
+          "default": false
+        },
+        "notifyWaitTime": {
+          "description": "Time (in seconds) to wait post arrival to notify visit completion",
+          "type": "integer",
+          "format": "int32",
+          "default": 300
+        }
+      }
+    },
+    "DisplayConfig": {
+      "description": "A container with various settings required for display",
+      "properties": {
+        "primaryIdentifier": {
+          "description": "This determines which is primary value that gets displayed in the app for the task",
+          "$ref": "#/definitions/DisplayIdentifier"
+        },
+        "secondaryIdentifier": {
+          "description": "This determines which is secondary value that gets displayed in the app for the task",
+          "$ref": "#/definitions/DisplayIdentifier"
+        },
+        "tourDaysPastLimit": {
+          "description": "Days before current day to display tasks of tours",
+          "type": "integer",
+          "format": "int32",
+          "default": 1
+        },
+        "tourDaysFutureLimit": {
+          "description": "Days after current day to display tasks of tours",
+          "type": "integer",
+          "format": "int32",
+          "default": 1
+        },
+        "primaryCardConfig": {
+          "description": "Items to be displayed on small card",
+          "$ref": "#/definitions/CardConfig"
+        },
+        "secondaryCardConfig": {
+          "description": "Items to be displayed on big card",
+          "$ref": "#/definitions/CardConfig"
+        },
+        "showCratingInfo": {
+          "type": "boolean",
+          "default": false
+        },
+        "showOrderHistory": {
+          "type": "boolean",
+          "default": true
+        },
+        "showContactUs": {
+          "type": "boolean",
+          "default": false
+        },
+        "greetingsUrl": {
+          "description": "Url for displaying season's greetings",
+          "type": "string"
+        }
+      }
+    },
+    "CardConfig": {
+      "description": "A container for card settings to be applied to Locus delivery app",
+      "properties": {
+        "placeholder1": {
+          "$ref": "#/definitions/CardPlaceholder"
+        },
+        "placeholder2": {
+          "$ref": "#/definitions/CardPlaceholder"
+        }
+      }
+    },
+    "CardPlaceholder": {
+      "type": "string",
+      "enum": [
+        "ETA",
+        "SLOT",
+        "AMOUNT",
+        "SKU_COUNT",
+        "NAVIGATE",
+        "CALL"
+      ]
+    },
+    "NavigationConfig": {
+      "description": "A container for navigation settings to be applied to Locus delivery app",
+      "properties": {
+        "restrictions": {
+          "description": "List of navigation restrictions",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/NavigationRestriction"
+          }
+        },
+        "useAddressToNavigate":{
+            "description": "Boolean to denote to use address for navigation",
+            "type": "boolean",
+            "default":false
+        }
+      }
+    },
+    "NavigationRestriction": {
+      "type": "string",
+      "enum": [
+        "AVOID_HIGHWAYS",
+        "AVOID_FERRIES",
+        "AVOID_TOLLS"
+      ]
+    },
+    "DisplayIdentifier": {
+      "type": "string",
+      "enum": [
+        "TASK_ID",
+        "VISIT_NAME",
+        "ALTERNATE_ID",
+        "LOCATION_NAME",
+        "CUSTOMER_NAME"
+      ]
+    },
+    "MinimalCrateSettings": {
+      "properties": {
+        "enableCrating": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "AppPermissionsConfig": {
+      "properties": {
+        "shouldDrawOverApps": {
+          "description": "Boolean to denote if LOTR should ask permission to draw over other apps",
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "LiveViewVisibilitySettings": {
+      "properties": {
+        "isTabbedLiveViewEnabled": {
+          "description": "Boolean to denote if new live view should be the landing page",
+          "type": "boolean",
+          "default": false
+        },
+        "isOrderTabEnabled": {
+          "description": "Boolean to denote if order tab on new live view is enabled",
+          "type": "boolean",
+          "default": true
+        },
+        "isRiderTabEnabled": {
+          "description": "Boolean to denote if rider tab on new live view is enabled",
+          "type": "boolean",
+          "default": true
+        },
+        "isAlertsTabEnabled": {
+          "description": "Boolean to denote if alerts tab on new live view is enabled",
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "PhoneVerificationConfig": {
+      "properties": {
+        "shouldVerifyPhoneNumber": {
+          "description": "Boolean to denote if phone number should verified via OTP",
+          "type": "boolean",
+          "default": false
+        },
+        "phoneNumberValidityPeriod": {
+          "description": "Number of days a phone number is valid for. After expiry, must be re-verified.",
+          "type": "integer",
+          "format": "int32",
+          "default": 90
+        }
+      }
+    },
+    "LotrFeatureConfig": {
+      "properties": {
+        "enableTrips": {
+          "description": "flag to denote if trip structure should be enabled on the iOS App",
+          "type": "boolean",
+          "default": false
+        },
+        "showTripsByDefault": {
+          "description": "Flag to denote if trips screen should be the default screen on the app",
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "ClientAppState": {
+      "description": "A container for the state of a client app.",
+      "properties": {
+        "state": {
+          "type": "string",
+          "description": "State, serialized as json"
+        }
+      }
+    },
+    "TaskUpdateEvent": {
+      "description": "Event denoting an update to a task",
+      "properties": {
+        "task": {
+          "$ref": "#/definitions/Task",
+          "description": "A snapshot of the task object at the time the event was triggered. Note that this will reflect a snapshot of the object at the time the event was triggered, which may not be the latest state. This difference can become more prominent in case there is a delay in delivery of or receiving the callback."
+        }
+      }
+    },
+    "TourUpdateEvent": {
+      "description": "Event denoting an update to tours",
+      "properties": {
+        "tourDate": {
+          "description": "Date of the tour which has been updated",
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp for when the event was triggered, in UTC using the standard ISO 8601 format"
+        }
+      }
+    },
+    "UserUpdateEvent": {
+      "description": "Event denoting an update to a user or their status",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/User",
+          "description": "A snapshot of the user object at the time the event was triggered. Note that this will reflect a snapshot of the object at the time the event was triggered, which may not be the latest state. This difference can become more prominent in case there is a delay in delivery of or receiving the callback."
+        }
+      }
+    },
+    "TaskGraph": {
+      "description": "A DAG (directed acyclic graph) representation of the task. Each node in the graph is a location of interest, that delivery person needs to visit.",
+      "properties": {
+        "clientId": {
+          "description": "Id of the client to whom the task belongs",
+          "type": "string"
+        },
+        "taskId": {
+          "description": "Id of the task within the client, for which this is the DAG representation",
+          "type": "string"
+        },
+        "visits": {
+          "description": "List of visits that need to be done.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Visit"
+          }
+        }
+      }
+    },
+    "AppFields": {
+      "description": "Container for values that are required specifically for rendering on the FE app.",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AppFieldItem"
+          }
+        }
+      }
+    },
+    "AppFieldItem": {
+      "properties": {
+        "item": {
+          "description": "String representation of the item, to be displayed on the app",
+          "type": "string"
+        },
+        "format": {
+          "description": "\nFormat for the item.\nURL - Url that can be opened as web view on app\n\nTEXT - Static text that can be displayed on the app (e.g. any custom notes)\n",
+          "type": "string",
+          "enum": [
+            "URL",
+            "TEXT"
+          ]
+        },
+        "additionalValues": {
+          "description": "Extra properties required depending on the type. For URL, a key \"url\" should be provided with the url to open. For TEXT, a key \"text\" should be provided with actuall text that needs to be displayed.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "LocationDetails": {
+      "description": "The location details of the particular location.",
+      "properties": {
+        "id": {
+          "description": "An identifier for the location.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name of the location.",
+          "type": "string"
+        },
+        "verified": {
+          "description": "A Boolean that tells whether the location is verified.",
+          "type": "boolean"
+        }
+      }
+    },
+    "Visit": {
+      "description": "A location, or a visit or a stop in the delivery person's tour",
+      "properties": {
+        "id": {
+          "description": "An identifier for the visit, unique within a task graph.",
+          "type": "string"
+        },
+        "volumes": {
+          "description": "All the volume exchanges applicable for current location.",
+          "$ref": "#/definitions/Volumes"
+        },
+        "resources": {
+          "description": "All the resource exchanges applicable for current location.",
+          "$ref": "#/definitions/Resources"
+        },
+        "visitStatus": {
+          "description": "Status for the visit in delivery person's tour.",
+          "$ref": "#/definitions/VisitStatus"
+        },
+        "trackLink": {
+          "type": "string",
+          "description": "Url for the live view of the trip"
+        },
+        "chosenLocation": {
+          "description": "The location that has been chosen out of the multiple options for location.",
+          "$ref": "#/definitions/VisitLocation"
+        },
+        "eta": {
+          "description": "A map, containing ETA values for each visit status. Key is the visit status, and value is the ETAs.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/MinimalEtaWrapper"
+          }
+        },
+        "checklists": {
+          "description": "A list of checklists to be shown to the delivery person on the app. Currently, only applies to  COMPLETED and CANCELLED statuses. For COMPLETED status, you can provide a list of BOOLEAN checklist items; each of which will be rendered as a checkbox. For CANCELLED status, you can provide only one SINGLE_CHOICE item, containing multiple cancellation reasons; each of which will be rendered in a radio-button group.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Checklist"
+          }
+        },
+        "amountTransaction": {
+          "description": "Amount that needs to be transacted",
+          "$ref": "#/definitions/AmountTransaction"
+        },
+        "payments": {
+          "$ref": "#/definitions/Payments"
+        },
+        "visitMetadata": {
+          "$ref": "#/definitions/VisitMetadata"
+        },
+        "userVisitType": {
+          "$ref": "#/definitions/UserVisitType"
+        },
+        "breakType": {
+          "$ref": "#/definitions/BreakType"
+        },
+        "summary": {
+          "$ref": "#/definitions/VisitSummary"
+        },
+        "orderDetail": {
+          "$ref": "#/definitions/OrderDetail"
+        },
+        "appFields": {
+          "$ref": "#/definitions/AppFields"
+        },
+        "visitName": {
+          "description": "Custom name give to locations by the client",
+          "type": "string"
+        },
+        "visitAppConfig": {
+          "description": "Visit level configuration settings that overrides app config settings",
+          "$ref": "#/definitions/VisitAppConfig"
+        },
+        "locationDetails": {
+          "description": "Location details such as is the location verified, location name and id.",
+          "$ref": "#/definitions/LocationDetails"
+        }
+      }
+    },
+    "VisitSummary": {
+      "description": "Summary for a visit",
+      "properties": {
+        "tardiness": {
+          "description": "Amount of time (in seconds)by which SLA has been breached.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "actualTravelPair": {
+          "$ref": "#/definitions/TimeDistancePair"
+        }
+      }
+    },
+    "VisitMetadata": {
+      "description": "Metadata about visit. This can be used to give hints to the engine to add certain biases.",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "HOMEBASE",
+            "CUSTOMER"
+          ]
+        }
+      }
+    },
+    "VisitLocation": {
+      "description": "Location and time related information for a visit",
+      "properties": {
+        "id": {
+          "description": "An optional id for the location. This will be used to identify same locations, which can help in improving the fleet plan optimization.",
+          "type": "string"
+        },
+        "geometry": {
+          "description": "Properties related to the geometry of the place.",
+          "$ref": "#/definitions/Geometry"
+        },
+        "timeWindow": {
+          "description": "Time window within which delivery person should be present at the location.",
+          "$ref": "#/definitions/TimeWindow"
+        },
+        "locationAddress": {
+          "description": "Address for a visit location",
+          "$ref": "#/definitions/StructuredAddress"
+        },
+        "contact": {
+          "description": "Contact point at a visit location.",
+          "$ref": "#/definitions/ContactPoint"
+        },
+        "geocodingMetadata": {
+          "$ref": "#/definitions/GeocodingMetadata"
+        }
+      }
+    },
+    "GeocodingMetadata": {
+      "description": "Metadata for geocoding of the address",
+      "properties": {
+        "goodness": {
+          "$ref": "#/definitions/GeocodingGoodness"
+        }
+      }
+    },
+    "GeocodingGoodness": {
+      "description": "A combined measure of confidence and accuracy",
+      "type": "string",
+      "enum": [
+        "HIGH",
+        "LOW"
+      ]
+    },
+    "StructuredAddress": {
+      "description": "A real world address",
+      "properties": {
+        "id": {
+          "description": "An id for the address",
+          "type": "string"
+        },
+        "placeName": {
+          "description": "Name of the place",
+          "type": "string"
+        },
+        "localityName": {
+          "description": "Name of the locality if available",
+          "type": "string"
+        },
+        "formattedAddress": {
+          "description": "Text representation of the address.",
+          "type": "string"
+        },
+        "pincode": {
+          "description": "Zipcode for the address",
+          "type": "string"
+        },
+        "city": {
+          "description": "City of the address",
+          "type": "string"
+        },
+        "state": {
+          "description": "State of the address",
+          "type": "string"
+        },
+        "countryCode": {
+          "description": "Country code to uniquely identify the country",
+          "type": "string"
+        }
+      }
+    },
+    "ContactPoint": {
+      "description": "Contact point at a visit location.",
+      "properties": {
+        "name": {
+          "description": "Name of contact",
+          "type": "string"
+        },
+        "number": {
+          "description": "Number for contact person",
+          "type": "string"
+        },
+        "email": {
+          "description": "Email id of contact",
+          "type": "string"
+        }
+      }
+    },
+    "VisitStatusRequest": {
+      "description": "Status for a visit in delivery person's tour. This denotes whether delivery person has already reached the location, or is on the way, or has left from the location, etc.",
+      "properties": {
+        "status": {
+          "description": "Actual status. ACCEPTED - delivery person has accepted the task. STARTED - delivery person is moving towards the location. ARRIVED - delivery person has reached the location, and just waiting there. TRANSACTING - delivery person is at the location, and the transaction is in progress. COMPLETED - delivery person has completed the transaction at the location.",
+          "type": "string",
+          "enum": [
+            "RECEIVED",
+            "WAITING",
+            "ACCEPTED",
+            "STARTED",
+            "ARRIVED",
+            "TRANSACTING",
+            "COMPLETED",
+            "CANCELLED"
+          ]
+        },
+        "triggerTime": {
+          "description": "Time when the status update was triggered on the client side",
+          "type": "string",
+          "format": "date-time"
+        },
+        "checklistValues": {
+          "description": "A map containing selected values for each checklist item.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "VisitStatus": {
+      "description": "Status for a visit in delivery person's tour. This denotes whether delivery person has already reached the location, or is on the way, or has left from the location, etc.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/VisitStatusRequest"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "receiveTime": {
+              "description": "Time when the status update was received on Locus server",
+              "type": "string",
+              "format": "date-time"
+            },
+            "location": {
+              "description": "Location of the actor that triggered the update, at the time of the update",
+              "$ref": "#/definitions/MinimalLocation"
+            },
+            "actor": {
+              "description": "Actor who triggered this status update",
+              "$ref": "#/definitions/Actor"
+            },
+            "assignedUser": {
+              "$ref": "#/definitions/AssignedUser"
+            }
+          }
+        }
+      ]
+    },
+    "TimeWindow": {
+      "description": "A time window.",
+      "properties": {
+        "slot": {
+          "description": "Time slot",
+          "$ref": "#/definitions/TimeSlot"
+        },
+        "strictness": {
+          "description": "Defines how strictly the time slot needs to be adhered to. STRICT - adhere strictly to the slot. NORMAL - adhere to time slot if possible. OPTIONAL - adhering to time slot is desirable, but not mandatory.",
+          "type": "string",
+          "enum": [
+            "STRICT",
+            "NORMAL",
+            "OPTIONAL"
+          ],
+          "default": "STRICT"
+        },
+        "canTransactBeforeSlot": {
+          "description": "Boolean that tells whether transaction can happen before the time slot or not. Default is false.",
+          "type": "boolean",
+          "default": false
+        },
+        "canTransactAfterSlot": {
+          "description": "Boolean that tells whether transaction can happen after the time slot or not. Default is false.",
+          "type": "boolean"
+        },
+        "treatEtaAsSla": {
+          "description": "Boolean that tells whether calculated eta value should be treated as SLA. Default is false.",
+          "type": "boolean",
+          "default": false
+        },
+        "transactionDuration": {
+          "description": "Duration required for transaction at the location, in seconds.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "readinessDuration": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Time required for readiness for visit, in seconds.",
+          "default": 0
+        }
+      }
+    },
+    "Resources": {
+      "description": "A list of resource exchanges",
+      "properties": {
+        "resources": {
+          "description": "List of resource exchanges",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Resource"
+          }
+        }
+      }
+    },
+    "Resource": {
+      "description": "A resource can be any object present with the delivery person. For example, the amount of money they have. Each resource puts a constraint on the task assignment. A resource will apply a constraint, if and only if ResourceLimit for the resource has been defined for the delivery person.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ResourceDefinition"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "description": "Value of the resource.",
+              "type": "number",
+              "format": "double"
+            },
+            "exchangeType": {
+              "$ref": "#/definitions/ResourceExchangeType"
+            }
+          }
+        }
+      ]
+    },
+    "ResourceExchangeType": {
+      "description": "Denotes the type of exchange that needs to happen for the resource, from delivery person's perspective.",
+      "type": "string",
+      "enum": [
+        "GIVE",
+        "COLLECT"
+      ]
+    },
+    "ResourceDefinition": {
+      "properties": {
+        "name": {
+          "description": "Name of a resource. This should be a unique value within a task. Example values are - CASH.",
+          "type": "string"
+        },
+        "unit": {
+          "description": "Unit for a resource.",
+          "type": "string",
+          "enum": [
+            "COUNT",
+            "SECONDS",
+            "METERS",
+            "KG",
+            "UNIT"
+          ],
+          "default": "COUNT"
+        }
+      }
+    },
+    "Volumes": {
+      "description": "A list of volume exchanges",
+      "properties": {
+        "volumes": {
+          "description": "List of volume exchanges",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Volume"
+          }
+        }
+      }
+    },
+    "Volume": {
+      "description": "Volume of an item",
+      "allOf": [
+        {
+          "$ref": "#/definitions/VolumeDefinition"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "value": {
+              "description": "Value of the volume in the given unit. For most cases, this will be a number. For LBH_METERS, this will be a string containing comma separated length, breadth and height, each in meters",
+              "type": "string"
+            },
+            "exchangeType": {
+              "$ref": "#/definitions/ResourceExchangeType"
+            }
+          }
+        }
+      ]
+    },
+    "VolumeDefinition": {
+      "properties": {
+        "unit": {
+          "description": "Unit for volume.",
+          "type": "string",
+          "enum": [
+            "ITEM_COUNT",
+            "TASK_COUNT",
+            "METERS_CUBIC",
+            "LBH_METERS"
+          ]
+        }
+      }
+    },
+    "Geometry": {
+      "description": "Properties related to the geometry of the place.",
+      "properties": {
+        "latLng": {
+          "description": "Coordinates for the location",
+          "$ref": "#/definitions/LatLng"
+        }
+      }
+    },
+    "UserToursResponse": {
+      "description": "A user's tours response",
+      "properties": {
+        "clientId": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "tours": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DetailedTour"
+          }
+        },
+        "tasks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Task"
+          }
+        }
+      }
+    },
+    "DetailedTour": {
+      "properties": {
+        "tourId": {
+          "$ref": "#/definitions/TourId"
+        },
+        "tourName": {
+          "type": "string"
+        },
+        "plannedTour": {
+          "$ref": "#/definitions/Tour"
+        },
+        "tourDate": {
+          "type": "string",
+          "description": "Date of the tour. e.g. 2017-08-31"
+        },
+        "isMultiDay": {
+          "type": "boolean",
+          "default": false
+        },
+        "eta": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/EtaWrapper"
+          }
+        },
+        "timeSlot": {
+          "$ref": "#/definitions/TimeSlot"
+        },
+        "status": {
+          "$ref": "#/definitions/DetailedTourStatus"
+        },
+        "statusUpdates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DetailedTourStatus"
+          }
+        }
+      }
+    },
+    "DetailedTourStatus": {
+      "description": "Status of the tour",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/TourStatus"
+        },
+        "triggerTime": {
+          "description": "Time when the status update was triggered on the client side",
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "TourId": {
+      "description": "An id for a tour",
+      "properties": {
+        "clientId": {
+          "type": "string"
+        },
+        "tourId": {
+          "type": "string"
+        }
+      }
+    },
+    "Tour": {
+      "description": "A sequence of visits, to be carried out by a delivery person.",
+      "properties": {
+        "visits": {
+          "description": "Sequence of visits in this tour",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TourVisit"
+          }
+        },
+        "summary": {
+          "$ref": "#/definitions/TourSummary"
+        },
+        "userVisitsData": {
+          "type": "array",
+          "description": "Full user visits data",
+          "items": {
+            "$ref": "#/definitions/UserVisit"
+          }
+        }
+      }
+    },
+    "TourStatus": {
+      "description": "Enum specifiying current status of tour - queued, started or completed.",
+      "type": "string",
+      "enum": [
+        "QUEUED",
+        "STARTED",
+        "COMPLETED"
+      ]
+    },
+    "TourSummary": {
+      "description": "Summary of a tour",
+      "properties": {
+        "totalTravelDistance": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "UserVisit": {
+      "description": "A user's visit",
+      "properties": {
+        "visit": {
+          "$ref": "#/definitions/Visit"
+        },
+        "userId": {
+          "$ref": "#/definitions/UserId"
+        },
+        "skip": {
+          "description": "boolean denoting whether this visit is skipped",
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "UserVisitType": {
+      "type": "string",
+      "enum": [
+        "START_OF_DAY",
+        "END_OF_DAY",
+        "SHIFT_START",
+        "SHIFT_END",
+        "TOUR_END",
+        "BREAK",
+        "OTHER",
+        "NONE"
+      ],
+      "default": "NONE"
+    },
+    "BreakType": {
+      "type": "string",
+      "enum": [
+        "LUNCH",
+        "REFUEL",
+        "NIGHT",
+        "OTHER"
+      ],
+      "default": "LUNCH"
+    },
+    "TourVisit": {
+      "description": "A location, or a visit or a stop in the delivery person's tour",
+      "properties": {
+        "id": {
+          "description": "An identifier for the visit. If the visit comes from a task, this will be the id of visit within the task graph.",
+          "type": "string"
+        },
+        "eta": {
+          "description": "A map, containing ETA values for each visit status. Key is the visit status, and value is the ETAs.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/MinimalEtaWrapper"
+          }
+        },
+        "visitSource": {
+          "type": "string",
+          "enum": [
+            "TASK",
+            "USER"
+          ]
+        },
+        "sourceId": {
+          "type": "string",
+          "description": "Id for the source of this visit. If visit comes from task, this will be the task id. If it comes from user, then this will be user id."
+        },
+        "clientId": {
+          "type": "string",
+          "description": "Id of the client containing the source."
+        },
+        "visitTravel": {
+          "$ref": "#/definitions/VisitTravel"
+        }
+      }
+    },
+    "UserId": {
+      "description": "A unique id for the user",
+      "properties": {
+        "clientId": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        }
+      }
+    },
+    "BulkUpdates": {
+      "properties": {
+        "updates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BulkUpdate"
+          }
+        }
+      }
+    },
+    "UpdatePasswordRequest": {
+      "properties": {
+        "existingPassword": {
+          "description": "Existing password of the personnel",
+          "type": "string"
+        },
+        "newPassword": {
+          "description": "New password of the personnel",
+          "type": "string"
+        }
+      }
+    },
+    "BulkUpdate": {
+      "properties": {
+        "updateType": {
+          "$ref": "#/definitions/BulkUpdateType"
+        },
+        "url": {
+          "type": "string"
+        },
+        "payload": {
+          "type": "string"
+        },
+        "messageId": {
+          "type": "string"
+        },
+        "id" : {
+          "type" : "string"
+        }
+      }
+    },
+    "BulkUpdateType": {
+      "description": "Denotes the type of update",
+      "type": "string",
+      "enum": [
+        "LOCATION",
+        "TASK_STATUS",
+        "VISIT_STATUS",
+        "LINE_ITEM_TRANSACTION",
+        "APP_SETTINGS_LOG",
+        "USER_VISIT_STATUS",
+        "TOUR_VISIT_STATUS"
+      ]
+    },
+    "LotrVersionResponse": {
+      "description": "LOTR version check response",
+      "properties": {
+        "isUpdateRequired": {
+          "description": "returns true if LOTR application has to be updated",
+          "type": "boolean"
+        },
+        "lotrInformation": {
+          "description": "LOTR application information will be shared only if update is required",
+          "$ref": "#/definitions/LotrInformation"
+        }
+      }
+    },
+    "AvailableApkVersionsResponse": {
+      "description": "list of available apk versions",
+      "properties": {
+        "apks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ApkVersion"
+          }
+        }
+      }
+    },
+    "ActiveApkVersionsResponse": {
+      "description": "active apk versions for each client",
+      "properties": {
+        "clientApks": {
+          "description": "map of clientId to active apk version",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/ApkVersion"
+          }
+        }
+      }
+    },
+    "ActiveApkVersionForClientResponse": {
+      "description": "active apk versions for a specific client",
+      "properties": {
+        "versionCode": {
+          "description": "version code of the LOTR application",
+          "type": "integer"
+        },
+        "url": {
+          "description": "url to the location of the application apk",
+          "type": "string"
+        },
+        "activatedOn": {
+          "type": "string",
+          "format": "date-time",
+          "description": "time at which the log was recorded"
+        }
+      }
+    },
+    "ApkVersion": {
+      "description": "apk version information",
+      "properties": {
+        "versionCode": {
+          "description": "version code of the LOTR application",
+          "type": "integer"
+        },
+        "isRollback": {
+          "description": "whether the apk is a reverted build with a higher version code for contingency rollback",
+          "type": "boolean",
+          "default": true
+        },
+        "url": {
+          "description": "url to the location of application apk",
+          "type": "string"
+        }
+      }
+    },
+    "LotrInformation": {
+      "description": "LOTR application details",
+      "properties": {
+        "versionCode": {
+          "description": "version code of the LOTR application",
+          "type": "integer"
+        },
+        "versionName": {
+          "description": "version name of the LOTR application",
+          "type": "string"
+        },
+        "earliestVersion": {
+          "description": "version code of the earliest supported LOTR application",
+          "type": "integer"
+        },
+        "url": {
+          "description": "url to the location of application apk",
+          "type": "string"
+        },
+        "md5": {
+          "description": "md5 hash of the application apk file",
+          "type": "string"
+        }
+      }
+    },
+    "DateTimeRequest": {
+      "description": "Datetime request",
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Device timestamp in UTC using the standard ISO 8601 format"
+        }
+      }
+    },
+    "DateTimeResponse": {
+      "description": "Datetime response",
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp in UTC using the standard ISO 8601 format"
+        }
+      }
+    },
+    "UpdateActiveAppVersionRequest": {
+      "description": "Update app version request object",
+      "properties": {
+        "earliestVersion": {
+          "description": "version code of the earliest supported LOTR application",
+          "type": "integer",
+          "format": "int32",
+          "required": false
+        }
+      }
+    },
+    "Client": {
+      "description": "Minimal info of the client",
+      "properties": {
+        "name": {
+          "description": "Name of the client",
+          "type": "string"
+        },
+        "clientId": {
+          "description": "Id of the client",
+          "type": "string"
+        },
+        "clientPreferences": {
+          "$ref": "#/definitions/ClientPreferences"
+        }
+      }
+    },
+    "ClientPreferences": {
+      "description": "Settings for a business client of Locus",
+      "properties": {
+        "liveViewSettings": {
+          "$ref": "#/definitions/LiveViewSettings"
+        }
+      }
+    },
+    "LiveViewSettings": {
+      "description": "Live view related settings for the client",
+      "properties": {
+        "logo": {
+          "description": "Url for client logo",
+          "type": "string"
+        }
+      }
+    },
+    "PasswordMetadata": {
+      "properties": {
+        "expiryDate": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "LogWrapper": {
+      "properties": {
+        "payload": {
+          "type": "string"
+        }
+      }
+    },
+    "EtaWrapper": {
+      "description": "Various ETAs for a task status",
+      "properties": {
+        "initialEta": {
+          "description": "Initial ETA for this status",
+          "$ref": "#/definitions/Eta"
+        },
+        "currentEta": {
+          "description": "Current ETA for this status",
+          "$ref": "#/definitions/Eta"
+        }
+      }
+    },
+    "Eta": {
+      "description": "ETA related information",
+      "properties": {
+        "arrivalTime": {
+          "description": "Time of arrival",
+          "type": "string",
+          "format": "date-time"
+        },
+        "estimatedOn": {
+          "description": "Timestamp when this ETA was estimated",
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "VisitTravel": {
+      "description": "Travel from previous visit to current visit",
+      "properties": {
+        "timeDistancePair": {
+          "$ref": "#/definitions/TimeDistancePair"
+        },
+        "polyline": {
+          "type": "string"
+        }
+      }
+    },
+    "ControlEventPublishRequest": {
+      "description": "A request containing control event wrapper",
+      "properties": {
+        "eventWrapper": {
+          "$ref": "#/definitions/ControlEventWrapper"
+        },
+        "collapse": {
+          "type": "boolean",
+          "description": "Is message collapsible"
+        },
+        "shouldRegister": {
+          "type": "boolean",
+          "default": true,
+          "description": "Should message be registered"
+        }
+      }
+    },
+    "LotrVersionsResponse": {
+      "description": "Response containing list of notifications channels",
+      "properties": {
+        "versions": {
+          "type": "object",
+          "description": "A notification channel object which has user id and version",
+          "additionalProperties": {
+            "$ref": "#/definitions/NotificationChannel"
+          }
+        }
+      }
+    },
+    "GenerateOtpRequest": {
+      "properties": {
+        "phoneNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "UpdateUserPhoneNumberRequest": {
+      "description": "A request to update phone number. If enabled, otp is verified",
+      "properties": {
+        "phoneNumber": {
+          "type": "string"
+        },
+        "otp": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

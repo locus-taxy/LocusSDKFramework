@@ -143,6 +143,10 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: LocusSDKDelegate {
+    func logEvent(tag: String, message: String, logLevel: LocusSDKLogLevel) {
+        print("logEvent---\(tag)\(message)\(logLevel.rawValue)----")
+    }
+    
     func isOfflineStatusChanged(isOffline: Bool) {
         print("isOfflineStatusChanged-----\(isOffline)----")
     }
