@@ -45,7 +45,7 @@ DEPENDENCIES:
   - "LocusSDKFramework (from `git@github.com:locus-taxy/LocusSDKFramework.git`)"
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - AlamofireImage
     - Cosmos
@@ -87,4 +87,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 66fdb462b19b4145028f4dd39c01c387a4b74754
 
-COCOAPODS: 1.6.2
+COCOAPODS: 1.9.3
