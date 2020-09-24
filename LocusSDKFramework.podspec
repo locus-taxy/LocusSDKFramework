@@ -1,14 +1,14 @@
 Pod::Spec.new do |s|
 
   s.name                    = "LocusSDKFramework"
-  s.version                 = "0.0.1"
+  s.version                 = "0.0.2"
   s.summary                 = "Framework for location tracking and displaying checklist view"
   s.description             = "This can be used for tracking locations and syncing with locus server as well as collection checklist values"
 
   s.ios.deployment_target   = '11.0'
   s.homepage                = "https://locus.sh/"
   s.author                  = "Karthik M N"
-  s.source                  = { :http => "https://github.com/locus-taxy/lotr-sdk-ios/releases/download/0.0.1/LocusSDKFramework.zip" }
+  s.source                  = { :http => "https://github.com/locus-taxy/lotr-sdk-ios/releases/download/0.0.2/LocusSDKFramework.zip" }
   s.license                 = { :type => 'Apache-2.0', :file => 'LICENSE' }
 
   s.ios.vendored_frameworks = "LocusSDKFramework.framework"
