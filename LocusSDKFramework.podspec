@@ -14,18 +14,17 @@ Pod::Spec.new do |s|
   s.ios.vendored_frameworks = "LocusSDKFramework.framework"
   s.exclude_files = "SampleApp"
 
-  s.dependency 'Alamofire'
-  s.dependency 'AlamofireImage'
-  s.dependency 'Moya/RxSwift'
-  s.dependency 'RealmSwift'
-  s.dependency 'RxSwift'
-  s.dependency 'RxCocoa'
-  s.dependency 'RxCoreLocation'
-  s.dependency 'RxRealm'
-  s.dependency 'Cosmos'
-  s.dependency 'CropViewController'
-  s.dependency 'KeyboardAvoidingView'
-  s.dependency 'Reusable'
-  s.dependency 'Result'
+  s.dependency 'Alamofire', '~> 4.9.1'
+  s.dependency 'AlamofireImage', '~> 3.6.0'
+  s.dependency 'Moya/RxSwift', '~> 13.0.1'
+  s.dependency 'RealmSwift', '~> 3.21.0'
+  s.dependency 'RxSwift', '~> 4.5.0'
+  s.dependency 'RxCocoa', '~> 4.5.0'
+  s.dependency 'RxCoreLocation', '~> 1.3.2'
+  s.dependency 'RxRealm', '~> 0.7.6'
+  s.dependency 'Cosmos', '~> 21.0.0'
+  s.dependency 'CropViewController', '~> 2.5.2'
+  s.dependency 'KeyboardAvoidingView', '~> 5.0.0'
+  s.dependency 'Reusable', '~> 4.1.0'
 
 end
