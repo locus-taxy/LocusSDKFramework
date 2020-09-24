@@ -26,5 +26,6 @@ Pod::Spec.new do |s|
   s.dependency 'CropViewController'
   s.dependency 'KeyboardAvoidingView'
   s.dependency 'Reusable'
+  s.dependency 'Result'
 
 end
