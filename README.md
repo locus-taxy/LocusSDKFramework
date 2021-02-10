@@ -1,1 +1,1 @@
-# LocusSDKFramework
+# LocusFramework

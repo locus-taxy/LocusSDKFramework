@@ -1,0 +1,11 @@
+framework module LocusFramework {
+  umbrella header "LocusFramework.h"
+
+  export *
+  module * { export * }
+}
+
+module LocusFramework.Swift {
+    header "LocusFramework-Swift.h"
+    requires objc
+}
