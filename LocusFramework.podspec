@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target   = '11.0'
   s.homepage                = "https://locus.sh/"
   s.author                  = "Karthik M N"
-  s.source                  = { :http => "https://github.com/locus-taxy/lotr-sdk-ios/releases/download/1.0.0/LocusFramework.zip" }
+  s.source                  = { :http => "https://github.com/locus-taxy/LocusSDKFramework/releases/download/1.0.0/LocusFramework.zip" }
   s.license                 = { :type => 'Apache-2.0', :file => 'LICENSE' }
 
   s.ios.vendored_frameworks = "LocusFramework.framework"

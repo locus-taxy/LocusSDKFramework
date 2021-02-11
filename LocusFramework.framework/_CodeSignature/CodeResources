@@ -22,71 +22,75 @@
 		</data>
 		<key>Assets.car</key>
 		<data>
-		Zgzr4u49LglmYqOBPnBWdhttzEk=
+		eAwkgV+wXhbLuY+vsen9DePFOrQ=
 		</data>
 		<key>Checklist.storyboardc/Bx1-6Q-JnO-view-fQW-mm-5Qq.nib</key>
 		<data>
-		nd9bLdWAQE1PzeLEdSi2QqqilC4=
+		DYCVKetcCWyT9KHgIxuri+eoLWY=
 		</data>
 		<key>Checklist.storyboardc/ChecklistViewControllerBottomView.nib</key>
 		<data>
-		gz0FGFt8XRnUAlIYES7uM15iZdo=
+		jvbx3Fkl/a9m7RUXgiRVPQuetro=
 		</data>
 		<key>Checklist.storyboardc/ChecklistViewControllerFullScreen.nib</key>
 		<data>
-		YHo8aEcmko5jw0MoymZE4Lu4R40=
+		QhhiYle3odYRIK0mH9Pa1H7hAg8=
 		</data>
 		<key>Checklist.storyboardc/Info.plist</key>
 		<data>
-		XETih7rvEBX2ad1vIBjD3lRNH1Q=
+		Mk58T6FevVDP6c9f7ZXyhs0cNJQ=
 		</data>
 		<key>Checklist.storyboardc/SignatureViewController.nib</key>
 		<data>
-		+V2fFtl6L/ZbOcSd6MSqVDAYN9k=
+		NVqzdec8gAQKoh+OeAHu3BbKeAw=
 		</data>
 		<key>Checklist.storyboardc/Z8U-pL-2Ws-view-W9M-4O-CKi.nib</key>
 		<data>
-		T86iY1e1dmJ37NDmEF9nljs3PoU=
+		f7GD9/nes/D8ZcSmB2A+gy1d94U=
 		</data>
 		<key>Checklist.storyboardc/sH1-Od-lhl-view-zvp-Bx-CfI.nib</key>
 		<data>
-		LGIZq/qWx+JztNKVue/7V0yTdqc=
+		7qpiAEbtwoOg/HYF01dOX1ZNHNI=
 		</data>
 		<key>ChecklistBooleanView.nib</key>
 		<data>
-		J1/FA2K2MnQ3ZSzWX1D6jnCpjuM=
+		jz6qRlG8Mai+xrQpn3QoHKAY0lY=
 		</data>
 		<key>ChecklistDateTimeView.nib</key>
 		<data>
-		9brAEQhvdp1mtqr4ECRPGSIQDgk=
+		8w8d7nE2NtbVBQGysxVYH9uMTWo=
 		</data>
 		<key>ChecklistHeadingView.nib</key>
 		<data>
-		qraaBqMwZeuZuM8gShzRhe1x618=
+		3IRE7OGS8h4M5ykhTIE4vP1XOF0=
 		</data>
 		<key>ChecklistImageView.nib</key>
 		<data>
-		5m89vqq74q6xhkiYMDrq5EQzc0o=
+		QEewcLofl4R1EscxUk5NiwnhPa0=
 		</data>
-		<key>ChecklistPinView.nib</key>
+		<key>ChecklistPinView.nib/objects-14.0+.nib</key>
 		<data>
-		aJ9Gkq7S/mA/FJkqQqemnHss6bw=
+		jPFalo2cRljR40SS9qGp8vfqZAM=
+		</data>
+		<key>ChecklistPinView.nib/runtime.nib</key>
+		<data>
+		N3iDGM4tGturPu76vjYB8xMPvZs=
 		</data>
 		<key>ChecklistRatingView.nib</key>
 		<data>
-		X0t3Mz6PTbX2cUmloocy3g0aGGg=
+		WfSOoNogP6Lj8Ai2iOrfLovjXs4=
 		</data>
 		<key>ChecklistSingleChoiceView.nib</key>
 		<data>
-		yyviVKsfsDt7hX6VeH74gp0SeD0=
+		RrBNV0CrW1OOumsc1jjybGGDQh4=
 		</data>
 		<key>ChecklistTextFieldView.nib</key>
 		<data>
-		1ClpV2BzVhH2uvLIiBInVsDDVoQ=
+		6IpC6dIxuhcU4nz78/mg4CjOjQE=
 		</data>
 		<key>ChecklistURLView.nib</key>
 		<data>
-		Vdh/qvebxxHuqRHrfZEoEL7DkCE=
+		lFjFWWQ5puF7SoGoOjjaiBAfmk4=
 		</data>
 		<key>Headers/LocusFramework-Swift.h</key>
 		<data>
@@ -98,11 +102,11 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		gNg3ekJmN45ETIAf7pyA/A3cxAo=
+		ZtNgks8sTjo4mk2BU944C5teREo=
 		</data>
 		<key>LaunchScreen.storyboardc/01J-lp-oVM-view-Ze5-6b-2t3.nib</key>
 		<data>
-		rGWjjUFXfcAHd1570LyCh/MP7Mc=
+		AmMkl3fubeX6uwe96Cdpw+6uGQY=
 		</data>
 		<key>LaunchScreen.storyboardc/Info.plist</key>
 		<data>
@@ -110,11 +114,11 @@
 		</data>
 		<key>LaunchScreen.storyboardc/UIViewController-01J-lp-oVM.nib</key>
 		<data>
-		oAFIfJPeO2NhfaWybJGs58AIRtI=
+		NSDLpQ1C5sfBTivqaBLxSsUH0P8=
 		</data>
 		<key>Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib</key>
 		<data>
-		gtVvka2E2C2sPtaCRg8R8Jy5Uog=
+		dKkjcV9iMO6YJKjaXJ8m8ft11+A=
 		</data>
 		<key>Main.storyboardc/Info.plist</key>
 		<data>
@@ -122,31 +126,31 @@
 		</data>
 		<key>Main.storyboardc/UIViewController-BYZ-38-t0r.nib</key>
 		<data>
-		Ht+8zTPnS/GeCgC8Xdzm39u5NjM=
+		PfDiWywe1lFD/nE9jJYcy7S+NpQ=
 		</data>
 		<key>Modules/LocusFramework.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<data>
-		/cGcvRDwK+yG/iUYA5dW5tW8fTI=
+		V5mG7h1PbSI46LXzm9nCVvhy3tY=
 		</data>
 		<key>Modules/LocusFramework.swiftmodule/Project/arm64.swiftsourceinfo</key>
 		<data>
-		/cGcvRDwK+yG/iUYA5dW5tW8fTI=
+		V5mG7h1PbSI46LXzm9nCVvhy3tY=
 		</data>
 		<key>Modules/LocusFramework.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
-		KPyNzZToShKA7eJX9IuEecGYysg=
+		AJSL8ukCC/FVjLkgOslPyuVJOj8=
 		</data>
 		<key>Modules/LocusFramework.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		yuwGTtOI4RmVBdzrJuQ3kvzRAIY=
+		yI+6jiwOMPMG6QieUjTgN5S6V/g=
 		</data>
 		<key>Modules/LocusFramework.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		KPyNzZToShKA7eJX9IuEecGYysg=
+		AJSL8ukCC/FVjLkgOslPyuVJOj8=
 		</data>
 		<key>Modules/LocusFramework.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		yuwGTtOI4RmVBdzrJuQ3kvzRAIY=
+		yI+6jiwOMPMG6QieUjTgN5S6V/g=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -162,11 +166,11 @@
 		</data>
 		<key>Scanner.storyboardc/ScannerViewController.nib</key>
 		<data>
-		Zg5LTi7WNUL4sCd3bexlsv/3qd8=
+		Xd3p2N20gU27ayTzMipzuAZhB4k=
 		</data>
 		<key>Scanner.storyboardc/zKB-mp-8Mc-view-PXd-f6-uiu.nib</key>
 		<data>
-		7xl4LkM9Fl+dPF3MBO75fPOb5oc=
+		ya/5yTN4UhR1rnnSiOgtnGJkjWM=
 		</data>
 		<key>ar.lproj/Localizable.strings</key>
 		<dict>
@@ -364,119 +368,126 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			pIJDnaX+m6ttMVIz8RORhcQDNeUJFh22WHat1CG6P44=
+			IAn6NqCYPZAVgl4VRDLs0akAE3B4Y1492JK782FpsH4=
 			</data>
 		</dict>
 		<key>Checklist.storyboardc/Bx1-6Q-JnO-view-fQW-mm-5Qq.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			qyLc7tY7bSEvYJ3UtVXF38vu/p3PEUI6i1xRzvTmxYg=
+			5AOSOiyfoRzOBz6QL2GgGcxjG/i3ot7W5Wx7acC1NFU=
 			</data>
 		</dict>
 		<key>Checklist.storyboardc/ChecklistViewControllerBottomView.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			XSvAmR1yilo835d4U3ujaIS1YZoJ4Fvon+dN3WMl79M=
+			mhGfzEL8lUq6Dpzf69OYYuhFdFIxDILReS83N5A0vOY=
 			</data>
 		</dict>
 		<key>Checklist.storyboardc/ChecklistViewControllerFullScreen.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			lVPFFrqrBI4tqcjDZogpO1zcQrJ6vsyMPO9mIvv0Zik=
+			Qe6zYN6MhxgZKYjPtkPJHnBBmj+SbcSTF7/8ezwzSgc=
 			</data>
 		</dict>
 		<key>Checklist.storyboardc/Info.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			MqkBHr3QvVjFSXOwpMUjC7cU8yFJp18UDJqYVcIO9n0=
+			PJNrc4o6OKRCxkIAA2I/KD12rpISUICFqubIxR5P39A=
 			</data>
 		</dict>
 		<key>Checklist.storyboardc/SignatureViewController.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1zKx3i2wYw81ppeSSsRkU8Kw/i7Oi2eejbL3JB+nUAw=
+			6pu0HW9QRMACHgxivKjQ3fTjQXp6TZ/5N5sRXbSKEiQ=
 			</data>
 		</dict>
 		<key>Checklist.storyboardc/Z8U-pL-2Ws-view-W9M-4O-CKi.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			jNINDQLYkQar2adXkwPJsu5tF2sw7SNq3MfWVKzarNE=
+			GE43X8mDO8hV3sJquyg/moj+Cz1E5d6Bi6JY/ZC46AA=
 			</data>
 		</dict>
 		<key>Checklist.storyboardc/sH1-Od-lhl-view-zvp-Bx-CfI.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			OHR5SFv+Wdl+zacRKkXgF9Z++xzYZf3ZK81N45EMSls=
+			84McEFsq0yeHAWV8ZurbdZY67z/51FB8YvqFgD4eC70=
 			</data>
 		</dict>
 		<key>ChecklistBooleanView.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			pEatoFL1N158WLyzkHrbEbsZLqKDp0aTSCTT/nFmr58=
+			KmuOetFO2wnsLoP9XmJfZOiNn3x0bhgp7JJrGfh92YU=
 			</data>
 		</dict>
 		<key>ChecklistDateTimeView.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			6DIxadFSX9vJ2Sym5eiiEgZxDawXLfLUQ7b3PIFo8/M=
+			LbiXyQeD3jPVoDSWsvwnHJqUd+c26AGtqVxjpPEiR2Q=
 			</data>
 		</dict>
 		<key>ChecklistHeadingView.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wQMZzwnw8W4CQdjfpJ8NEjfMbEboK4M5twrEXazZSTE=
+			G1oAD6DI+E8TGmhC4axyfhIEbSgReilTiHFFXEQfgq4=
 			</data>
 		</dict>
 		<key>ChecklistImageView.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			PfmGoo0ebcxDiCwLd5JRxkxxVLQEBhwfuRIp454Hd3k=
+			GCwhvt7fOu4Y00xbKfnfsDFdKB4Yn47ftsw0Uw1EPqg=
 			</data>
 		</dict>
-		<key>ChecklistPinView.nib</key>
+		<key>ChecklistPinView.nib/objects-14.0+.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			IBA55RnOP2kBDsiMWS5w3bcMzAfxfKc3RBFh1JIbn9A=
+			gMzDo+kvLYD61PqKFPmlLfjBR+TlqIHeru5+gKgZZe0=
+			</data>
+		</dict>
+		<key>ChecklistPinView.nib/runtime.nib</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			6TcU7DJzv6AY1ggvtuwkGmrChUw411O5sXpXCeWajP0=
 			</data>
 		</dict>
 		<key>ChecklistRatingView.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			3868Zoe9jMLupR39azpj8IAhZzKja2iGkleN1sTJf+s=
+			BX7J6vuGg8KbBBKq04braWEOr9hrP3YQeqPqytXkLpg=
 			</data>
 		</dict>
 		<key>ChecklistSingleChoiceView.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			5f8cm7Sohr56YkwGsjEIHch/6Cs7dGlUE+/oOp7ZdHs=
+			FT8D0Wj9WFofGVihuQHNvbUbd7zOacz3W7i/+Mvcp0g=
 			</data>
 		</dict>
 		<key>ChecklistTextFieldView.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			XdkDNLaUKVMF5JhkQzrIs1SaDy23+03hrLmzsjd+EfU=
+			aYlW8c4rOyqcOP6OJ7ZTBY+P6dTgjrf899+VJCu52UM=
 			</data>
 		</dict>
 		<key>ChecklistURLView.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			2Up2uLZHihD7ODGtmWLNg40bfboiWphKy+723ooGKP8=
+			e2FkcMlKmOvXzUDmh0demXFJW3hfJTEOcLg+XUiyfO4=
 			</data>
 		</dict>
 		<key>Headers/LocusFramework-Swift.h</key>
@@ -497,7 +508,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			OHH5rbSS7ob4U76AQDvU2foq7xfbEiccq+tIjksIawc=
+			Ps63Igs7sSesY3doHX0tSTWHewJrjLJaGFgDJkCZlNQ=
 			</data>
 		</dict>
 		<key>LaunchScreen.storyboardc/Info.plist</key>
@@ -511,14 +522,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			yUx7C0llgf/J8nAQz7ExnjLh3xP77ugxFed0Vgpa1Q0=
+			iOmbN8rXeowtAfqN1bq5ZfY9t2VZBog5Y/nBHRS3Xfw=
 			</data>
 		</dict>
 		<key>Main.storyboardc/BYZ-38-t0r-view-8bC-Xf-vdC.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			qx0eJHxXdxZZx3C6ZTDVc8ZLvkY/8WxTp9txSUUN984=
+			cRID5up7u1jb1GO/wNwFG/UNqEbOE+cD0paYns5XMsM=
 			</data>
 		</dict>
 		<key>Main.storyboardc/Info.plist</key>
@@ -532,49 +543,49 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			xNpoz6qqIX0f4E4QlQi4Eohe04JDo9VuxdW6nyJ5Fus=
+			GugLMRoTCcO3VOueYIN9JqfqEy68BakB72smeENwyiE=
 			</data>
 		</dict>
 		<key>Modules/LocusFramework.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wYuy++ngfGFgLdlm/iYx2SbseYLTL86pUTqWUBL2/Bw=
+			lwadDyJPuke2MKOVveZMOQh8MAxy5TwAp6TrQZwBG6U=
 			</data>
 		</dict>
 		<key>Modules/LocusFramework.swiftmodule/Project/arm64.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			wYuy++ngfGFgLdlm/iYx2SbseYLTL86pUTqWUBL2/Bw=
+			lwadDyJPuke2MKOVveZMOQh8MAxy5TwAp6TrQZwBG6U=
 			</data>
 		</dict>
 		<key>Modules/LocusFramework.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/IN6mbptPCtQIJ4vpzrutxqCFIJz2KaNoTwQ9eSV4cI=
+			PNGCG7w1Zz4lcFVFEjdCOHMTPkGbQzFNGRhxGBFc2SU=
 			</data>
 		</dict>
 		<key>Modules/LocusFramework.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			cFTFvL3zFktBBzo0GZhtpTjEaZ5Oo7L4p4T4NqZF1no=
+			1Qx7kHBJNATTHG9/x4hHQ6dcJ7cTCLBfJLMUPmbGdro=
 			</data>
 		</dict>
 		<key>Modules/LocusFramework.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/IN6mbptPCtQIJ4vpzrutxqCFIJz2KaNoTwQ9eSV4cI=
+			PNGCG7w1Zz4lcFVFEjdCOHMTPkGbQzFNGRhxGBFc2SU=
 			</data>
 		</dict>
 		<key>Modules/LocusFramework.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			cFTFvL3zFktBBzo0GZhtpTjEaZ5Oo7L4p4T4NqZF1no=
+			1Qx7kHBJNATTHG9/x4hHQ6dcJ7cTCLBfJLMUPmbGdro=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -602,14 +613,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			RUcvGvCwyx+NWbFVdPIO4oaoaeg+GEzWcSkwV4lf9J4=
+			8TS4JwSX8AC1YV3JTN4W1Wojq3boDAyowx5nNe6RKjs=
 			</data>
 		</dict>
 		<key>Scanner.storyboardc/zKB-mp-8Mc-view-PXd-f6-uiu.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			xhAkTdGcC2Cl2GKIWYdZHPqrYvx3zk77nDWM1FvLOAg=
+			3kkpNk/FIarNJfPsBvfaKjy7abVeQwpb47+gQ1UQf4A=
 			</data>
 		</dict>
 		<key>ar.lproj/Localizable.strings</key>
