@@ -1,4 +1,0 @@
-framework module LocusSDKFramework {
-  header "LocusSDKFramework-Swift.h"
-  requires objc
-}
