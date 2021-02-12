@@ -13,6 +13,7 @@ Pod::Spec.new do |s|
 
   s.ios.vendored_frameworks = "LocusFramework.framework"
   s.exclude_files = "SampleApp"
+  s.xcconfig = { 'FRAMEWORK_SEARCH_PATHS' => '/Applications/Xcode.app/Contents/Developer/Library/Frameworks' }
 
   s.dependency 'Alamofire'
   s.dependency 'AlamofireImage'
@@ -24,6 +25,7 @@ Pod::Spec.new do |s|
   s.dependency 'RxRealm'
   s.dependency 'Cosmos'
   s.dependency 'CropViewController'
-  s.dependency 'IHKeyboardAvoiding'
+  s.dependency 'KeyboardAvoidingView'
+  s.dependency 'Reusable'
 
 end
